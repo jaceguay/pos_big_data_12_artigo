@@ -4,4 +4,9 @@
 
 Preview github code
 
-teste
+Edição no IPAD
+
+    [ ] criar malha SUMO
+    [ ] testar, importar para QGIS
+    [ ] criar buffer, utilizar vértices das vias/cruzamentos
+        [ ] vetor, vértices em interseções
