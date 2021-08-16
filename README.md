@@ -1,12 +1,17 @@
-# pos_big_data_12_artigo
+---
 
-[pág.proj](https://www.notion.so/jaceguay/An-lise-e-visualiza-o-dados-de-tr-fego-fornecidos-por-aplicativos-de-navega-o-m-vel-f00fa00960264087ba5a0cd16c717a6a)
+nome: Calibragem de um modelo de simulação de tráfego, utiliando dados de navegação móvel.
+data: 2021-08-16
 
-Preview github code
+---
 
-Edição no IPAD
+# Calibragem de um modelo de simulação de tráfego, utiliando dados de navegação móvel.
 
-    [ ] criar malha SUMO
-    [ ] testar, importar para QGIS
-    [ ] criar buffer, utilizar vértices das vias/cruzamentos
-        [ ] vetor, vértices em interseções
+## Introdução
+
+A partir de estimativas obtidas com dados da simulação, criar visualizações que não são possíveis apenas com os dados do feed em tempo real do Waze.
+
+## Modelo de teste
+
+![fundo_qgis_osm](imgs\testeQGIS_base.png)
+
