@@ -14,7 +14,7 @@ A partir de estimativas obtidas com dados da simulação, criar visualizações 
 
 ## Modelo de teste
 
-Pasta **teste_sim**, decal QGIS, coordenadas com offset de -700000 (evitar artefatos gráficos na viewport do netedit, coordendas muito distantes da origem)
+**teste_sim**: Decal QGIS, coordenadas com offset de -700000 (evitar artefatos gráficos na viewport do netedit, coordendas muito distantes da origem)
 
 ![fundo_qgis_osm](imgs/testeQGIS_base.jpg)
 
