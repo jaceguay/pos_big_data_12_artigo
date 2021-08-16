@@ -18,3 +18,4 @@ A partir de estimativas obtidas com dados da simulação, criar visualizações 
 
 ![fundo_qgis_osm](imgs/testeQGIS_base.jpg)
 
+**dados_waze**:
