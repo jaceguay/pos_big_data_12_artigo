@@ -13,5 +13,5 @@ A partir de estimativas obtidas com dados da simulação, criar visualizações 
 
 ## Modelo de teste
 
-![fundo_qgis_osm](imgs\testeQGIS_base.jpg)
+![fundo_qgis_osm](imgs/testeQGIS_base.jpg)
 
