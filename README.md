@@ -17,12 +17,3 @@ A partir de estimativas obtidas com dados da simulação, criar visualizações 
 **teste_sim**: Decal QGIS, coordenadas com offset de -700000 (evitar artefatos gráficos na viewport do netedit, coordendas muito distantes da origem)
 
 ![fundo_qgis_osm](imgs/testeQGIS_base.jpg)
-
-**dados_waze**:
-
-Considerações relativas a cores/velocidades, Here Maps:
-
-- Green (fast): 85 - 100% of free flow speeds
-- Yellow (moderate): 65 - 85%
-- Orange (slow); 45 - 65%
-- Red (stop and go): 0 - 45%
