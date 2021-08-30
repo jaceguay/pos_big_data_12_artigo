@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2021-08-30 18:33:09 by Eclipse SUMO netedit Version 1.10.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="C:\Users\jaceguay\Documents\drive\pos_big_data_12_artigo\proposta_a\malha.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\jaceguay\Documents\drive\pos_big_data_12_artigo\proposta_a\malha.net.xml"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-internal-links value="true"/>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<net version="1.9" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="0.00,0.00" convBoundary="730338.90,7019600.84,730792.47,7019939.45" origBoundary="-10000000000.00,-10000000000.00,10000000000.00,10000000000.00" projParameter="!"/>
+
+    <edge id="gneE1" from="gneJ2" to="gneJ3" priority="-1">
+        <lane id="gneE1_0" index="0" speed="13.89" length="566.03" shape="730339.86,7019599.55 730793.43,7019938.17"/>
+    </edge>
+
+    <junction id="gneJ2" type="dead_end" x="730338.90" y="7019600.84" incLanes="" intLanes="" shape="730338.90,7019600.84 730340.81,7019598.27"/>
+    <junction id="gneJ3" type="dead_end" x="730792.47" y="7019939.45" incLanes="gneE1_0" intLanes="" shape="730794.38,7019936.89 730792.47,7019939.45"/>
+
+</net>

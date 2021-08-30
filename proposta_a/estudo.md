@@ -2,10 +2,18 @@
 
 ## Material base:
 
-1. captura google transit
+- captura google transit
 
-![captura google maps](imgs/2021-08-27-171014.png)
+![captura google maps](imgs/2021-08-27-183944_dimensoes.jpg)
 
 27/08/2021 - 17:10
 
-2. base georreferenciada
+Base georreferenciada SIRGAS 2000/UTM zone 22S
+
+coordenadas: 730656 x 7019845
+
+## Etapas
+
+1. Malha
+2. Rotas (código trecho)
+3. Simulação
