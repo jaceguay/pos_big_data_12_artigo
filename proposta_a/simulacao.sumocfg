@@ -6,8 +6,11 @@
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/malha.net.xml"/>
-        <route-files value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/rotas.rou.xml"/>
+        <net-file value="malha.net.xml"/>
+        <route-files value="rotas.rou.xml"/>
     </input>
+    <output>
+        <full-output value="full.output.xml"/>
+    </output>
 
 </configuration>

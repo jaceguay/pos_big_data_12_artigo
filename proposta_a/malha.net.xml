@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2021-08-31 10:12:41 by Eclipse SUMO netedit Version 1.10.0
+<!-- generated on 2021-08-31 14:36:06 by Eclipse SUMO netedit Version 1.10.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/malha.net.xml"/>
+        <sumo-net-file value="C:\Users\jaceguay\Documents\drive\pos_big_data_12_artigo\proposta_a\malha.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/malha.net.xml"/>
+        <output-file value="C:\Users\jaceguay\Documents\drive\pos_big_data_12_artigo\proposta_a\malha.net.xml"/>
         <output.street-names value="true"/>
     </output>
 
@@ -43,27 +43,27 @@
     <location netOffset="0.00,0.00" convBoundary="730101.55,7019425.20,731185.63,7020242.31" origBoundary="-10000000000.00,-10000000000.00,10000000000.00,10000000000.00" projParameter="!"/>
 
     <edge id="ajfa" from="v1" to="v2" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center">
-        <lane id="ajfa_0" index="0" speed="16.00" length="468.00" shape="730102.50,7019423.92 730477.86,7019703.24"/>
-        <lane id="ajfa_1" index="1" speed="16.00" length="468.00" shape="730100.59,7019426.49 730475.95,7019705.80"/>
+        <lane id="ajfa_0" index="0" speed="16.00" length="468.00" shape="730102.51,7019423.92 730477.86,7019703.24"/>
+        <lane id="ajfa_1" index="1" speed="16.00" length="468.00" shape="730100.59,7019426.48 730475.95,7019705.80"/>
     </edge>
     <edge id="ajfb" from="v2" to="v3" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center">
         <lane id="ajfb_0" index="0" speed="8.50" length="210.90" shape="730478.00,7019703.34 730644.57,7019818.04"/>
         <lane id="ajfb_1" index="1" speed="8.50" length="210.90" shape="730476.19,7019705.97 730642.76,7019820.67"/>
     </edge>
     <edge id="ajfc" from="v3" to="gneJ9" name="Av.Ver.Abrahão João Francisco" priority="4" spreadType="center">
-        <lane id="ajfc_0" index="0" speed="8.50" length="19.96" shape="730655.10,7019824.84 730663.23,7019829.43"/>
-        <lane id="ajfc_1" index="1" speed="8.50" length="19.96" shape="730653.53,7019827.63 730661.66,7019832.21"/>
+        <lane id="ajfc_0" index="0" speed="8.50" length="19.96" shape="730655.10,7019824.84 730663.23,7019829.42"/>
+        <lane id="ajfc_1" index="1" speed="8.50" length="19.96" shape="730653.52,7019827.63 730661.66,7019832.21"/>
     </edge>
     <edge id="ajfd" from="gneJ9" to="gneJ10" name="Av.Ver.Abrahão João Francisco" priority="4" spreadType="center">
-        <lane id="ajfd_0" index="0" speed="8.50" length="19.37" shape="730672.78,7019835.25 730680.50,7019840.50"/>
-        <lane id="ajfd_1" index="1" speed="8.50" length="19.37" shape="730670.98,7019837.90 730678.70,7019843.14"/>
+        <lane id="ajfd_0" index="0" speed="8.50" length="19.38" shape="730672.77,7019835.25 730680.50,7019840.50"/>
+        <lane id="ajfd_1" index="1" speed="8.50" length="19.38" shape="730670.98,7019837.89 730678.70,7019843.15"/>
     </edge>
     <edge id="ajfe" from="gneJ10" to="gneJ11" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center" shape="730684.12,7019844.89 730721.63,7019882.70 730800.45,7019943.30 731185.63,7020223.70">
         <lane id="ajfe_0" index="0" speed="16.00" length="629.12" shape="730693.14,7019851.71 730722.69,7019881.50 730801.41,7019942.02 731186.57,7020222.41"/>
-        <lane id="ajfe_1" index="1" speed="16.00" length="629.12" shape="730690.86,7019853.96 730720.57,7019883.90 730799.49,7019944.58 731184.69,7020224.99"/>
+        <lane id="ajfe_1" index="1" speed="16.00" length="629.12" shape="730690.87,7019853.96 730720.57,7019883.90 730799.49,7019944.58 731184.69,7020224.99"/>
     </edge>
     <edge id="ajff" from="gneJ12" to="gneJ13" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center">
-        <lane id="ajff_0" index="0" speed="16.00" length="413.32" shape="731167.87,7020243.58 730839.40,7019992.89"/>
+        <lane id="ajff_0" index="0" speed="16.00" length="413.32" shape="731167.87,7020243.58 730839.40,7019992.88"/>
         <lane id="ajff_1" index="1" speed="16.00" length="413.32" shape="731169.81,7020241.04 730841.34,7019990.34"/>
     </edge>
     <edge id="ajfg" from="gneJ13" to="gneJ14" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center" shape="730840.28,7019991.54 730711.02,7019900.08 730677.23,7019878.28">
@@ -80,38 +80,38 @@
     </edge>
     <edge id="ajfj" from="gneJ16" to="gneJ17" name="Av.Ver.Abrahão João Francisco" priority="3" spreadType="center">
         <lane id="ajfj_0" index="0" speed="16.00" length="660.65" shape="730621.94,7019839.51 730104.02,7019449.09"/>
-        <lane id="ajfj_1" index="1" speed="16.00" length="660.65" shape="730623.87,7019836.96 730105.95,7019446.53"/>
+        <lane id="ajfj_1" index="1" speed="16.00" length="660.65" shape="730623.87,7019836.96 730105.94,7019446.53"/>
     </edge>
     <edge id="ajfra" from="gneJ16" to="v3" name="Av.Ver.Abrahão João Francisco" priority="4" spreadType="center" shape="730632.53,7019845.49 730634.78,7019829.17 730650.70,7019824.20">
-        <lane id="ajfra_0" index="0" speed="8.50" length="33.16" shape="730633.70,7019837.01 730634.78,7019829.17 730641.80,7019826.98"/>
+        <lane id="ajfra_0" index="0" speed="8.50" length="33.15" shape="730633.70,7019837.01 730634.78,7019829.17 730641.80,7019826.98"/>
     </edge>
     <edge id="ajfrb" from="gneJ10" to="gneJ14" name="Av.Ver.Abrahão João Francisco" priority="4" spreadType="center" shape="730684.12,7019844.89 730686.72,7019866.44 730677.23,7019878.28">
         <lane id="ajfrb_0" index="0" speed="8.50" length="36.88" shape="730687.05,7019855.81 730688.39,7019866.92 730683.20,7019873.39"/>
-        <lane id="ajfrb_1" index="1" speed="8.50" length="36.88" shape="730683.87,7019856.20 730685.05,7019865.96 730680.70,7019871.39"/>
+        <lane id="ajfrb_1" index="1" speed="8.50" length="36.88" shape="730683.87,7019856.19 730685.05,7019865.96 730680.70,7019871.39"/>
     </edge>
     <edge id="erva" from="gneJ24" to="gneJ29" name="R.Estud.Renato Victorino" priority="1" spreadType="center" shape="730657.42,7019909.23 730423.66,7019933.31">
-        <lane id="erva_0" index="0" speed="11.00" length="236.80" shape="730649.41,7019910.05 730423.66,7019933.31"/>
+        <lane id="erva_0" index="0" speed="11.00" length="236.80" shape="730649.41,7019910.06 730423.66,7019933.31"/>
     </edge>
     <edge id="ervb" from="gneJ29" to="gneJ24" name="R.Estud.Renato Victorino" priority="1" spreadType="center" shape="730423.33,7019930.13 730657.11,7019906.04">
         <lane id="ervb_0" index="0" speed="11.00" length="236.80" shape="730423.33,7019930.13 730649.08,7019906.87"/>
     </edge>
     <edge id="jsa" from="gneJ18" to="gneJ10" name="R.José Siqueira" priority="1" spreadType="center" shape="730718.70,7019603.28 730686.52,7019819.23 730684.12,7019844.89">
-        <lane id="jsa_0" index="0" speed="8.50" length="244.11" shape="730718.70,7019603.28 730686.52,7019819.23 730684.71,7019838.51"/>
+        <lane id="jsa_0" index="0" speed="8.50" length="244.11" shape="730718.70,7019603.28 730686.52,7019819.23 730684.72,7019838.51"/>
     </edge>
     <edge id="jsb" from="gneJ9" to="gneJ19" name="R.José Siqueira" priority="1" spreadType="center" shape="730668.09,7019834.00 730673.53,7019813.55 730706.50,7019600.71">
-        <lane id="jsb_0" index="0" speed="8.50" length="236.54" shape="730670.08,7019826.54 730673.53,7019813.55 730706.50,7019600.71"/>
+        <lane id="jsb_0" index="0" speed="8.50" length="236.54" shape="730670.07,7019826.54 730673.53,7019813.55 730706.50,7019600.71"/>
     </edge>
     <edge id="jsc" from="gneJ14" to="gneJ21" name="R.José Siqueira" priority="4" spreadType="center">
         <lane id="jsc_0" index="0" speed="8.50" length="28.32" shape="730677.88,7019887.61 730676.45,7019901.57"/>
         <lane id="jsc_1" index="1" speed="8.50" length="28.32" shape="730674.70,7019887.29 730673.27,7019901.24"/>
     </edge>
     <edge id="jsd" from="gneJ21" to="gneJ22" name="R.José Siqueira" priority="4" spreadType="center">
-        <lane id="jsd_0" index="0" speed="11.00" length="218.65" shape="730674.99,7019912.96 730643.65,7020122.94"/>
-        <lane id="jsd_1" index="1" speed="11.00" length="218.65" shape="730671.82,7019912.49 730640.49,7020122.47"/>
+        <lane id="jsd_0" index="0" speed="11.00" length="218.64" shape="730674.99,7019912.96 730643.65,7020122.94"/>
+        <lane id="jsd_1" index="1" speed="11.00" length="218.64" shape="730671.82,7019912.49 730640.49,7020122.46"/>
     </edge>
     <edge id="jse" from="gneJ23" to="gneJ24" name="R.José Siqueira" priority="2" spreadType="center">
-        <lane id="jse_0" index="0" speed="11.00" length="209.52" shape="730626.08,7020114.82 730654.57,7019915.42"/>
-        <lane id="jse_1" index="1" speed="11.00" length="209.52" shape="730629.25,7020115.27 730657.74,7019915.87"/>
+        <lane id="jse_0" index="0" speed="11.00" length="209.53" shape="730626.09,7020114.82 730654.57,7019915.42"/>
+        <lane id="jse_1" index="1" speed="11.00" length="209.53" shape="730629.25,7020115.28 730657.74,7019915.88"/>
     </edge>
     <edge id="jsf" from="gneJ24" to="gneJ15" name="R.José Siqueira" priority="2" spreadType="center">
         <lane id="jsf_0" index="0" speed="8.50" length="39.89" shape="730655.87,7019900.78 730656.54,7019874.89"/>
@@ -123,11 +123,11 @@
     <edge id="pjga" from="gneJ16" to="gneJ30" name="R.Pres.João Goulart" priority="1" spreadType="center" shape="730632.71,7019847.08 730402.05,7019872.66">
         <lane id="pjga_0" index="0" speed="11.00" length="233.78" shape="730620.73,7019848.41 730402.05,7019872.66"/>
     </edge>
-    <edge id="pjgb" from="gneJ30" to="gneJ16" name="R.Pres.João Goulart" priority="-1" spreadType="center" shape="730401.69,7019869.48 730632.35,7019843.90">
+    <edge id="pjgb" from="gneJ30" to="gneJ16" name="R.Pres.João Goulart" priority="1" spreadType="center" shape="730401.69,7019869.48 730632.35,7019843.90">
         <lane id="pjgb_0" index="0" speed="11.00" length="233.78" shape="730401.69,7019869.48 730620.37,7019845.23"/>
     </edge>
 
-    <junction id="gneJ10" type="right_before_left" x="730684.12" y="7019844.89" incLanes="jsa_0 ajfd_0 ajfd_1" intLanes="" shape="730682.28,7019856.39 730688.64,7019855.62 730688.66,7019854.74 730688.80,7019854.56 730689.02,7019854.56 730689.33,7019854.74 730689.73,7019855.09 730694.27,7019850.58 730691.75,7019847.93 730689.70,7019845.54 730688.13,7019843.42 730687.04,7019841.57 730686.43,7019839.98 730686.31,7019838.66 730683.12,7019838.36 730682.85,7019839.28 730682.60,7019839.50 730682.28,7019839.55 730681.88,7019839.44 730681.40,7019839.17 730677.80,7019844.47 730679.77,7019846.79 730680.58,7019848.57 730681.26,7019850.77 730681.83,7019853.37">
+    <junction id="gneJ10" type="right_before_left" x="730684.12" y="7019844.89" incLanes="jsa_0 ajfd_0 ajfd_1" intLanes="" shape="730682.28,7019856.38 730688.64,7019855.62 730688.66,7019854.73 730688.80,7019854.56 730689.02,7019854.56 730689.33,7019854.74 730689.73,7019855.09 730694.27,7019850.58 730691.75,7019847.93 730689.70,7019845.54 730688.13,7019843.42 730687.05,7019841.57 730686.44,7019839.98 730686.31,7019838.66 730683.12,7019838.36 730682.85,7019839.28 730682.61,7019839.50 730682.28,7019839.55 730681.88,7019839.44 730681.40,7019839.18 730677.81,7019844.47 730679.78,7019846.79 730680.58,7019848.57 730681.27,7019850.76 730681.84,7019853.37">
         <request index="0" response="00000" foes="01100"/>
         <request index="1" response="00000" foes="01100"/>
         <request index="2" response="00011" foes="00011"/>
@@ -136,7 +136,7 @@
     </junction>
     <junction id="gneJ11" type="dead_end" x="731185.63" y="7020223.70" incLanes="ajfe_0 ajfe_1" intLanes="" shape="731187.51,7020221.11 731183.75,7020226.29"/>
     <junction id="gneJ12" type="dead_end" x="731168.84" y="7020242.31" incLanes="" intLanes="" shape="731170.78,7020239.77 731166.90,7020244.85"/>
-    <junction id="gneJ13" type="priority" x="730840.28" y="7019991.54" incLanes="ajff_0 ajff_1" intLanes="" shape="730838.43,7019994.16 730842.32,7019989.07 730842.03,7019988.86 730838.34,7019994.09">
+    <junction id="gneJ13" type="priority" x="730840.28" y="7019991.54" incLanes="ajff_0 ajff_1" intLanes="" shape="730838.43,7019994.15 730842.31,7019989.07 730842.03,7019988.86 730838.34,7019994.08">
         <request index="0" response="00" foes="00"/>
         <request index="1" response="00" foes="00"/>
     </junction>
@@ -161,17 +161,17 @@
         <request index="4" response="000110" foes="000110"/>
         <request index="5" response="001110" foes="001110"/>
     </junction>
-    <junction id="gneJ17" type="dead_end" x="730104.98" y="7019447.81" incLanes="ajfj_0 ajfj_1" intLanes="" shape="730103.06,7019450.36 730106.91,7019445.25"/>
+    <junction id="gneJ17" type="dead_end" x="730104.98" y="7019447.81" incLanes="ajfj_0 ajfj_1" intLanes="" shape="730103.05,7019450.37 730106.91,7019445.25"/>
     <junction id="gneJ18" type="dead_end" x="730718.70" y="7019603.28" incLanes="" intLanes="" shape="730717.12,7019603.04 730720.28,7019603.52"/>
     <junction id="gneJ19" type="dead_end" x="730706.50" y="7019600.71" incLanes="jsb_0" intLanes="" shape="730704.92,7019600.47 730708.08,7019600.95"/>
-    <junction id="gneJ21" type="priority" x="730674.34" y="7019906.45" incLanes="jsc_0 jsc_1 jsr_0" intLanes="" shape="730678.04,7019901.73 730671.67,7019901.08 730670.93,7019903.33 730670.21,7019904.15 730669.25,7019904.76 730668.05,7019905.17 730666.62,7019905.38 730666.84,7019908.57 730668.99,7019908.86 730669.68,7019909.36 730670.12,7019910.09 730670.31,7019911.05 730670.24,7019912.25 730676.57,7019913.20">
+    <junction id="gneJ21" type="priority" x="730674.34" y="7019906.45" incLanes="jsc_0 jsc_1 jsr_0" intLanes="" shape="730678.04,7019901.73 730671.67,7019901.08 730670.93,7019903.33 730670.21,7019904.14 730669.25,7019904.76 730668.05,7019905.17 730666.62,7019905.38 730666.84,7019908.57 730668.99,7019908.86 730669.68,7019909.36 730670.12,7019910.09 730670.31,7019911.05 730670.24,7019912.25 730676.57,7019913.20">
         <request index="0" response="000" foes="100"/>
         <request index="1" response="000" foes="100"/>
         <request index="2" response="011" foes="011"/>
     </junction>
-    <junction id="gneJ22" type="dead_end" x="730642.07" y="7020122.70" incLanes="jsd_0 jsd_1" intLanes="" shape="730645.23,7020123.18 730638.90,7020122.23"/>
-    <junction id="gneJ23" type="dead_end" x="730627.67" y="7020115.05" incLanes="" intLanes="" shape="730630.84,7020115.50 730624.50,7020114.59"/>
-    <junction id="gneJ24" type="priority" x="730657.30" y="7019907.63" incLanes="ervb_0 jse_0 jse_1" intLanes="" shape="730664.76,7019908.72 730664.54,7019905.53 730662.34,7019905.13 730661.58,7019904.51 730661.05,7019903.59 730660.75,7019902.39 730660.67,7019900.90 730654.28,7019900.74 730653.63,7019903.02 730652.88,7019903.87 730651.85,7019904.53 730650.53,7019905.00 730648.92,7019905.28 730649.57,7019911.64 730651.72,7019911.85 730652.42,7019912.32 730652.86,7019913.04 730653.05,7019913.99 730652.99,7019915.19 730659.32,7019916.10 730659.75,7019913.93 730660.38,7019912.13 730661.19,7019910.72 730662.19,7019909.67 730663.38,7019909.01">
+    <junction id="gneJ22" type="dead_end" x="730642.07" y="7020122.70" incLanes="jsd_0 jsd_1" intLanes="" shape="730645.23,7020123.17 730638.91,7020122.23"/>
+    <junction id="gneJ23" type="dead_end" x="730627.67" y="7020115.05" incLanes="" intLanes="" shape="730630.84,7020115.50 730624.50,7020114.60"/>
+    <junction id="gneJ24" type="priority" x="730657.30" y="7019907.63" incLanes="ervb_0 jse_0 jse_1" intLanes="" shape="730664.76,7019908.72 730664.54,7019905.52 730662.34,7019905.13 730661.58,7019904.51 730661.05,7019903.59 730660.75,7019902.39 730660.67,7019900.90 730654.28,7019900.74 730653.63,7019903.02 730652.88,7019903.87 730651.85,7019904.53 730650.53,7019905.00 730648.92,7019905.28 730649.57,7019911.65 730651.72,7019911.86 730652.42,7019912.33 730652.86,7019913.04 730653.05,7019914.00 730652.99,7019915.20 730659.32,7019916.10 730659.75,7019913.93 730660.38,7019912.14 730661.19,7019910.72 730662.19,7019909.67 730663.38,7019909.01">
         <request index="0" response="011000" foes="011000"/>
         <request index="1" response="111000" foes="111000"/>
         <request index="2" response="000000" foes="000000"/>
@@ -179,11 +179,11 @@
         <request index="4" response="000000" foes="000011"/>
         <request index="5" response="000000" foes="000010"/>
     </junction>
-    <junction id="gneJ29" type="priority" x="730423.51" y="7019931.72" incLanes="erva_0" intLanes="" shape="730423.51,7019931.72 730423.83,7019934.90 730423.51,7019931.72">
+    <junction id="gneJ29" type="priority" x="730423.51" y="7019931.72" incLanes="erva_0" intLanes="" shape="730423.51,7019931.72 730423.84,7019934.90 730423.51,7019931.72">
         <request index="0" response="0" foes="0"/>
     </junction>
     <junction id="gneJ30" type="dead_end" x="730401.88" y="7019871.07" incLanes="pjga_0" intLanes="" shape="730401.88,7019871.07 730402.23,7019874.25 730401.88,7019871.07"/>
-    <junction id="gneJ9" type="priority" x="730668.09" y="7019834.00" incLanes="ajfc_0 ajfc_1" intLanes="" shape="730670.08,7019839.22 730673.67,7019833.93 730671.98,7019832.15 730671.51,7019831.06 730671.29,7019829.83 730671.33,7019828.46 730671.62,7019826.95 730668.53,7019826.13 730667.57,7019828.06 730666.89,7019828.54 730666.07,7019828.69 730665.11,7019828.52 730664.02,7019828.03 730660.87,7019833.61">
+    <junction id="gneJ9" type="priority" x="730668.09" y="7019834.00" incLanes="ajfc_0 ajfc_1" intLanes="" shape="730670.08,7019839.22 730673.67,7019833.92 730671.97,7019832.15 730671.51,7019831.06 730671.29,7019829.83 730671.33,7019828.46 730671.62,7019826.95 730668.53,7019826.13 730667.57,7019828.06 730666.89,7019828.54 730666.07,7019828.69 730665.11,7019828.52 730664.02,7019828.03 730660.87,7019833.61">
         <request index="0" response="000" foes="000"/>
         <request index="1" response="000" foes="000"/>
         <request index="2" response="000" foes="000"/>
@@ -193,7 +193,7 @@
         <request index="0" response="00" foes="00"/>
         <request index="1" response="00" foes="00"/>
     </junction>
-    <junction id="v3" type="priority" x="730650.70" y="7019824.20" incLanes="ajfb_0 ajfb_1 ajfra_0" intLanes="" shape="730652.74,7019829.02 730655.88,7019823.45 730653.59,7019822.14 730651.92,7019821.13 730650.57,7019820.26 730649.25,7019819.35 730647.65,7019818.22 730645.48,7019816.72 730641.85,7019821.99 730643.26,7019823.38 730643.37,7019823.99 730643.08,7019824.54 730642.40,7019825.02 730641.33,7019825.45 730642.28,7019828.50 730644.28,7019827.99 730646.17,7019827.71 730647.97,7019827.67 730649.66,7019827.88 730651.25,7019828.33">
+    <junction id="v3" type="priority" x="730650.70" y="7019824.20" incLanes="ajfb_0 ajfb_1 ajfra_0" intLanes="" shape="730652.74,7019829.02 730655.88,7019823.45 730653.59,7019822.14 730651.92,7019821.13 730650.57,7019820.26 730649.24,7019819.35 730647.65,7019818.23 730645.48,7019816.72 730641.85,7019821.99 730643.25,7019823.38 730643.36,7019823.99 730643.08,7019824.54 730642.40,7019825.02 730641.32,7019825.45 730642.28,7019828.51 730644.27,7019827.99 730646.17,7019827.71 730647.96,7019827.68 730649.66,7019827.88 730651.25,7019828.33">
         <request index="0" response="1100" foes="1100"/>
         <request index="1" response="1100" foes="1100"/>
         <request index="2" response="0000" foes="0011"/>
