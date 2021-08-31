@@ -16,4 +16,16 @@ coordenadas: 730656 x 7019845
 
 1. Malha
 2. Rotas (código trecho)
-3. Simulação
+3. Sensores
+4. Simulação
+
+## 1. Malha
+
+velocidade máxima:
+nome | km/h | m/s
+--- | --- | ---
+Av.Ver.Abrahão João Francisco (próx.lombada) | 30 | 8.5
+Av.Ver.Abrahão João Francisco | 60 | 16
+R.José Siqueira | 40 | 11
+R.Estud.Renato Victorino | 40 | 11
+R.Pres.João Goulart | 40 | 11

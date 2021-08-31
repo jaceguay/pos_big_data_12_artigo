@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2021-08-31 11:13:47 by Eclipse SUMO netedit Version 1.10.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/malha.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/malha.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-internal-links value="true"/>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <netedit>
+        <route-files value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/proposta_a/rotas.rou.xml"/>
+    </netedit>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <route edges="ajfa ajfb ajfc ajfd ajfe" color="yellow" id="ajfa_ajfe"/>
+    <route edges="ajfa ajfb ajfc ajfd ajfrb ajfh ajfi ajfj" color="yellow" id="ajfa_ajfj"/>
+    <route edges="ajfa ajfb ajfc jsb" color="yellow" id="ajfa_jsb"/>
+    <route edges="ajfa ajfb ajfc ajfd ajfrb ajfh ajfi pjga" color="yellow" id="ajfa_pjga"/>
+    <route edges="ajff ajfg ajfh ajfi ajfra ajfc ajfd ajfe" color="yellow" id="ajff_ajfe"/>
+    <route edges="ajff ajfg ajfh ajfi ajfj" color="yellow" id="ajff_ajfj"/>
+    <route edges="ajff ajfg ajfh ajfi ajfra ajfc jsb" color="yellow" id="ajff_jsb"/>
+    <route edges="ajff ajfg jsc jsd" color="yellow" id="ajff_jsd"/>
+    <route edges="ajff ajfg ajfh ajfi pjga" color="yellow" id="ajff_pjga"/>
+    <route edges="ajfa ajfb ajfc ajfd ajfrb jsc jsd" color="yellow" id="ajfj_jsd"/>
+    <route edges="ervb jsr jsd" color="yellow" id="ervb_jsd"/>
+    <route edges="jsa ajfe" color="yellow" id="jsa_ajfe"/>
+    <route edges="jsa ajfrb ajfh ajfi ajfj" color="yellow" id="jsa_ajfj"/>
+    <route edges="jsa ajfrb jsc jsd" color="yellow" id="jsa_jsd"/>
+    <route edges="jse jsf ajfi ajfra ajfc ajfd ajfe" color="yellow" id="jse_ajfe"/>
+    <route edges="jse jsf ajfi ajfj" color="yellow" id="jse_ajfj"/>
+    <route edges="jse jsf ajfi ajfra ajfc jsb" color="yellow" id="jse_jsb"/>
+    <route edges="pjgb ajfra ajfc ajfd ajfe" color="yellow" id="pjgb_ajfe"/>
+    <route edges="pjgb ajfj" color="yellow" id="pjgb_ajfj"/>
+    <route edges="pjgb ajfra ajfc jsb" color="yellow" id="pjgb_jsb"/>
+    <vehicle id="vehicle_0" depart="0.00" route="ajfa_ajfe"/>
+    <vehicle id="vehicle_1" depart="0.00" route="ajfa_ajfj"/>
+    <vehicle id="vehicle_10" depart="0.00" route="ervb_jsd"/>
+    <vehicle id="vehicle_11" depart="0.00" route="jsa_ajfe"/>
+    <vehicle id="vehicle_12" depart="0.00" route="jsa_ajfj"/>
+    <vehicle id="vehicle_13" depart="0.00" route="jsa_jsd"/>
+    <vehicle id="vehicle_14" depart="0.00" route="jse_ajfe"/>
+    <vehicle id="vehicle_15" depart="0.00" route="jse_ajfj"/>
+    <vehicle id="vehicle_16" depart="0.00" route="jse_jsb"/>
+    <vehicle id="vehicle_17" depart="0.00" route="pjgb_ajfe"/>
+    <vehicle id="vehicle_18" depart="0.00" route="pjgb_ajfj"/>
+    <vehicle id="vehicle_19" depart="0.00" route="pjgb_jsb"/>
+    <vehicle id="vehicle_2" depart="0.00" route="ajfa_jsb"/>
+    <vehicle id="vehicle_3" depart="0.00" route="ajfa_pjga"/>
+    <vehicle id="vehicle_4" depart="0.00" route="ajff_ajfe"/>
+    <vehicle id="vehicle_5" depart="0.00" route="ajff_ajfj"/>
+    <vehicle id="vehicle_6" depart="0.00" route="ajff_jsb"/>
+    <vehicle id="vehicle_7" depart="0.00" route="ajff_jsd"/>
+    <vehicle id="vehicle_8" depart="0.00" route="ajff_pjga"/>
+    <vehicle id="vehicle_9" depart="0.00" route="ajfj_jsd"/>
+</routes>
