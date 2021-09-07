@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2021-09-07 15:49:03 by Eclipse SUMO netedit Version 1.10.0
+<!-- generated on 2021-09-07 18:18:51 by Eclipse SUMO netedit Version 1.10.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -74,12 +74,12 @@
         <param key="vmax" value="11"/>
         <param key="vmin" value="7.7"/>
     </edge>
-    <edge id="gneE14" from="gneJ41" to="gneJ33" priority="5" spreadType="center" shape="730634.12,7019844.94 730636.73,7019831.12 730646.77,7019823.11">
+    <edge id="gneE14" from="gneJ41" to="gneJ33" name="Av.Ver.Abrahão João Francisco" priority="5" spreadType="center" shape="730634.12,7019844.94 730636.73,7019831.12 730646.77,7019823.11">
         <lane id="gneE14_0" index="0" speed="8.50" length="26.91" shape="730635.71,7019836.53 730636.73,7019831.12 730641.65,7019827.19"/>
         <param key="vmax" value="5.94"/>
         <param key="vmin" value="4.67"/>
     </edge>
-    <edge id="gneE15" from="gneJ35" to="gneJ39" priority="5" spreadType="center" shape="730685.88,7019846.41 730686.51,7019866.44 730677.26,7019877.23">
+    <edge id="gneE15" from="gneJ35" to="gneJ39" name="Av.Ver.Abrahão João Francisco" priority="5" spreadType="center" shape="730685.88,7019846.41 730686.51,7019866.44 730677.26,7019877.23">
         <lane id="gneE15_0" index="0" speed="8.50" length="34.25" shape="730687.80,7019856.56 730688.13,7019867.01 730683.40,7019872.53"/>
         <lane id="gneE15_1" index="1" speed="8.50" length="34.25" shape="730684.60,7019856.66 730684.89,7019865.87 730680.97,7019870.45"/>
         <param key="vmax" value="5.94"/>
