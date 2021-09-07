@@ -41,6 +41,12 @@ R.Estud.Renato Victorino                     | 40   | 11  | 7.7 até 11   | 6.05
 R.José Siqueira                              | 40   | 11  | 7.7 até 11   | 6.05 até 7.69 | 3.3 até 6.04  | 0 até 3.29
 R.Pres.João Goulart                          | 40   | 11  | 7.7 até 11   | 6.05 até 7.69 | 3.3 até 6.04  | 0 até 3.29
 
+### Gráfico
+
+1. filtrar linhas
+2.
+
+
 ## 2. Rotas
 
 origen | destino | prioridade
