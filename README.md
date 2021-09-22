@@ -15,3 +15,5 @@ A partir de estimativas obtidas com dados da simulação, criar visualizações 
 ## Modelo de teste
 
 passo da simulação: + multiplica por 1+, - por 0.99-
+
+dt
