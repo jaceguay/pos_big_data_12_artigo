@@ -1,8 +1,0 @@
-<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-    <vType id="vType_0" />
-    <vType id="veiculo_a" length="4.80" maxSpeed="40.00" accel="1.6" />
-    <route edges="a b c" color="yellow" id="route_0" />
-    <flow id="flow_0" begin="0.00" route="route_0" end="3600.00" number="2000" />
-    <flow id="flow_1" begin="0.00" route="route_0" end="3600.00" number="1800" />
-    <flow id="flow_2" begin="0.00" route="route_0" end="3600.00" number="1800" />
-</routes>
