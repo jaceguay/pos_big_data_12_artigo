@@ -1,9 +1,9 @@
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
-    <e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="15.90" freq="300.00" name="gneE12" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE19_0_5" lane="gneE19_0" pos="193.86" freq="300.00" name="gneE19" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE1_0_1" lane="gneE1_0" pos="59.89" freq="300.00" name="gneE1" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE1_1_0" lane="gneE1_1" pos="60.15" freq="300.00" name="gneE1" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE23_0_2" lane="gneE23_0" pos="79.31" freq="300.00" name="gneE23" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE6_0_3" lane="gneE6_0" pos="80.20" freq="300.00" name="gneE6" file="resultados/detectores/865880.xml" />
-    <e1Detector id="e1Detector_gneE6_1_4" lane="gneE6_1" pos="80.16" freq="300.00" name="gneE6" file="resultados/detectores/865880.xml" />
+    <e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="15.90" freq="300.00" name="gneE12" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE19_0_5" lane="gneE19_0" pos="193.86" freq="300.00" name="gneE19" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE1_0_1" lane="gneE1_0" pos="59.89" freq="300.00" name="gneE1" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE1_1_0" lane="gneE1_1" pos="60.15" freq="300.00" name="gneE1" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE23_0_2" lane="gneE23_0" pos="79.31" freq="300.00" name="gneE23" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE6_0_3" lane="gneE6_0" pos="80.20" freq="300.00" name="gneE6" file="resultados/detectores/257234.xml" />
+    <e1Detector id="e1Detector_gneE6_1_4" lane="gneE6_1" pos="80.16" freq="300.00" name="gneE6" file="resultados/detectores/257234.xml" />
 </additional>
