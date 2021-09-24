@@ -1,5 +1,7 @@
 # R.José Siqueira x Av.Ver.Abrahão João Francisco
 
+Adicionar rota, centro joão goulart e mesmo sentido peso velocidades trecho lombada
+
 ## Material base:
 
 - captura google transit
