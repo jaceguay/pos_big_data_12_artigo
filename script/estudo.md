@@ -58,3 +58,27 @@ origen | destino | prioridade
 Induction Loops Detectors (E1): Simple detector that measure properties of vehicles as they passed through.
 
 Lanearea Detectors (E2): Similar to a vehicle tracking cameras, tailored for measuring queues of standing/jammed vehicles and it keeps track of all vehicles which currently are on its area.
+
+## 4. Contagens
+
+Horário 18 - 19 hrs
+
+centro: 1391
+route_4 = 1098
+route_5 = 137
+route_7 = 156
+
+br: 1127
+route_0 = 882
+route_1 = 122
+route_3 = 123
+
+ressacada: 401
+route_11 = 82
+route_12 = 277
+route_13 = 42
+
+dom bosco: 834
+route_8, route_14, route_15, route_10,  = 163, 234, 254
+route_16 = 156
+route_9 = 27
