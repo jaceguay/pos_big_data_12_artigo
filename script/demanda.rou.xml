@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2021-09-26 15:06:32 by Eclipse SUMO netedit Version 1.10.0
+<!-- generated on 2021-09-28 09:33:43 by Eclipse SUMO netedit Version 1.10.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
-        <sumo-net-file value="/Users/jaceguayzukoski/Documents/temp/gg/back/malha.net.xml"/>
+        <sumo-net-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/script/malha.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/Users/jaceguayzukoski/Documents/temp/gg/back/malha.net.xml"/>
+        <output-file value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/script/malha.net.xml"/>
         <output.street-names value="true"/>
     </output>
 
@@ -32,8 +32,8 @@
     </pedestrian>
 
     <netedit>
-        <additional-files value="/Users/jaceguayzukoski/Documents/temp/gg/back/adicionais.xml"/>
-        <route-files value="/Users/jaceguayzukoski/Documents/temp/gg/back/demanda.rou.xml"/>
+        <additional-files value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/script/adicionais.xml"/>
+        <route-files value="/Users/jaceguayzukoski/Documents/git/pos_big_data_12_artigo/script/demanda.rou.xml"/>
     </netedit>
 
     <report>
