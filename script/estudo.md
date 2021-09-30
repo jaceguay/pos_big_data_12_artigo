@@ -57,22 +57,35 @@ Lanearea Detectors (E2): Similar to a vehicle tracking cameras, tailored for mea
 
 Horário 18 - 19 hrs
 
-centro: 1391
-route_4 = 1098
-route_5 = 137
-route_7 = 156
+### centro: 1391
 
-br: 1127
-route_0 = 882
-route_1 = 122
-route_3 = 123
+rota    | movimento | contagem
+--------|-----------|---------
+route_4 | 2>4       | 1098
+route_5 | 2>3       | 137
+route_7 | 2>1       | 156
 
-ressacada: 401
-route_11 = 82
-route_12 = 277
-route_13 = 42
+### br: 1127
 
-dom bosco: 834
-route_8, route_14, route_15, route_10,  = 163, 234, 254
-route_16 = 156
-route_9 = 27
+rota    | movimento | contagem
+--------|-----------|---------
+route_0 | 14>12     | 882
+route_1 | 14>11     | 122
+route_3 | 14>13     | 123
+
+### ressacada: 709
+
+rota     | movimento   | contagem
+---------|-------------|----------
+route_11 | 3>4         | 80
+route_12 | 13>11 + 3>1 | 277 + 310
+route_13 | 13>12       | 42
+
+### dom bosco: 600
+
+rota                | movimento | contagem
+--------------------|-----------|---------
+route_9             | 5>4       | 27
+route_10 + route_8  | 5>3       | 254
+route_14 + route_15 | 1>3       | 163
+route_16            | 1>4       | 156
