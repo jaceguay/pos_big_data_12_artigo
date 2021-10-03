@@ -11,9 +11,3 @@ dados: waze
 ## Introdução
 
 A partir de estimativas obtidas com dados da simulação, criar visualizações que não são possíveis apenas com os dados do feed em tempo real do Waze.
-
-## Modelo de teste
-
-passo da simulação: + multiplica por 1+, - por 0.99-
-
-dt
