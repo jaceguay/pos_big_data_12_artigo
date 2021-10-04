@@ -74,7 +74,7 @@ Os trechos com irregularidades possuem duas propriedades, o comprimento e cor at
 Os dados de trânsito foram capturados no dia 27/08/2021, a partir da opção "Trânsito em tempo" real as 18:39 horas, no endereço do serviço.
 
 ![captura de tela, google maps traffic](imagens/2021_08_27_183944_decal.jpg)
-Figura 3.1: Captura de tela do endereço http://maps.google.com
+Figura 1: Captura de tela do endereço http://maps.google.com
 
 Para facilitar os trabalhos seguintes de digitalização da malha, foi feito o georreferenciamento da imagem no software QGIS, no sistema de referência de coordenadas SIRGAS 2000/UTM zone 22s.
 
@@ -94,7 +94,7 @@ R.José Siqueira               | 40   | 11  | 7.7 até 11  | 6.05 até 7.69 | 3.
 R.Pres.João Goulart           | 40   | 11  | 7.7 até 11  | 6.05 até 7.69 | 3.3 até 6.04 | 0 até 3.29
 
 ![módulo netedit](imagens/netedit_01.jpg)
-Figura 3.2: Módulo Netedit, sobreposição da a malha digitalizada pelo autor com a imagem georreferenciada proveniente de captura de tela do Google Maps/Tráfego.
+Figura 2: Módulo Netedit, sobreposição da a malha digitalizada pelo autor com a imagem georreferenciada proveniente de captura de tela do Google Maps/Tráfego.
 
 **Atribuição de demanda e rotas (demanda.rou.xml):** A escolha do método de atribuição de tráfego depende da pesquisa conduzida. No mínimo é exigido uma lista de veículos com um tempo de entrada na simulação seguido de um ponto de origem e outro de destino, chamado de trip (viagem) para cada veículo ou flow (fluxo) para grupos de veículos, em ambos os casos a rota ótima é calculada durante a simulação. De maneira a ter controle sobre o fluxo de veículos, foi adotada outra modalidade onde o fluxo, com um número específico de veículos por hora, é atribuído a uma rota pré-definida.
 
@@ -109,7 +109,7 @@ Figura 3.2: Módulo Netedit, sobreposição da a malha digitalizada pelo autor c
 ```
 
 ![rotas definidas](imagens/rotas-fluxos.jpg)
-Figura 3.3: Rotas definidas que devem receber os fluxos de veículos.
+Figura 3: Rotas definidas que devem receber os fluxos de veículos.
 
 **Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores por indução, câmeras dentre outros que podem ser inseridos na malha, em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes tem a vantagem de coletarem dados de maneiras e pontos específicos da malha. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos a medida que passam sobre ele.
 
@@ -147,7 +147,7 @@ route_0       | gneE2        | 5.61
 **- "adicionais.xml":** (```<additional-files value="adicionais.xml"/>```) Os detectores foram posicionados em torno da inteseção viária, de maneira a capturarem todos os veículos que entram ou saem utilizando as rotas pré definidas.
 
 ![posição detectores](imagens/detectores_posicao.jpg)
-Figura 3.4: Posicionamento dos detectores na malha.
+Figura 4: Posicionamento dos detectores na malha.
 
 O arquivo de saída destacando-se as propriedades de interesse, foi tratado em conjunto com as informações da malha viária, a fim de fornecer as seguintes informações:
 
@@ -181,11 +181,34 @@ gneE21 | 6.234667  | 519         | R.José Siqueira               | 3        | 9
 A configuração inicial conta com o modelo da malha viária completo com as regras de comportamento permitidas, já na atribuição de demanda foi utilizado um arquivo com um valor de 10 veículos alocados por fluxo/rota. O comportamento não corresponde ao observado no Google Traffic, uma vez que não são conhecidas as demandas que levaram a este, os gráficos abaixo demonstram esta disparidade:
 
 ![desempenho sem demanda atribuída](imagens/plot_inicial.jpg)
-Figura 3.5: Desempenho da velocidade média de cada fluxo/rota (linha vermelha) em relação a velocidade máxima e mínima esperadas segundo o Google Traffic (região azul).
+Figura 5: Desempenho da velocidade média de cada fluxo/rota (linha vermelha) em relação a velocidade máxima e mínima esperadas segundo o Google Traffic (região azul).
 
 ## 4. Experimento
 
+Para que o comportamento dos veículos se aproxime com a situação reportada, onde o nível de ocupação das vias gera um impacto na velocidade média dos fluxos, serão dicionados mais veículos a simulação. O processo de adição de veículos irá seguir o seguinte fluxo:
 
+```mermaid
+graph TD;
+    A[Executar simulação] -->B[Avaliar velocidade média detectada nos trechos];
+    B-->C[existem velocidades superiores as estimadas pelo Google Traffic?];
+    C-->D[não];
+    C-->E[sim];
+    D-->F[finalizar processo];
+    E-->G[selecionar os trechos com maior prioridade e com velocidades excedentes];
+    G-->H[avaliar e aumentar o número de veículos proporcionamente];
+    H-->I[gravar novo arquivo demanda.rou.xml]
+    I-->A;
+```
+
+A imprementação de um processo com sucessivas simulações tem o intuito de aumentar a pressão no sistema viário simulado de maneira gradativa, até o ponto onde a velocidade média de todos os fluxos se aproxime do esperado, esta estratégia foi selecionada no lugar de um modelo universal de previsão, o motivo é a complexidade do sistema e suas particularidades em cada área de estudo, tanto a respeito da geometria viária, sua descrição funcional e interação dos vários fluxos com a malha e entre si. O modelo baseado em simulação se mostra capaz de imcorporar estes aspectos de maneira simples.
+
+Em cada ciclo envolvendo simulação e avaliação dos resultados, são realizadas considerações a respeito de quais fluxos devem receber veículos adicionais primeiro, qual o número de veículos serão adicionados para a próxima simulação ou se o resultado já está próximo o suficiente do esperado, o que implica na finalização do processo. O envolvimento da prioridade da via em consideração a ordem que são adicionados veículos implica que as vias principais possuem preferência nas interseções viárias, e portanto geram uma dependência no fluxo das vias secundárias e terciárias.
+
+A definição do número de veículos a serem adicionados é decidida combinando a diferênça entre a velocidade média esperada da obtida no ciclo atual, multiplicado o comprimento esperado de congestionamento ou atraso no trecho. A seguinte expressão foi utilizada para se obter o índice de crescimento, a granularidade da graduação pode ser definida pela divisão do resultado obtido, neste caso adotou-se 10:
+
+```python
+np.ceil((demanda_anterior + ((abs(valor['sumo_sensor_speed'] - valor['vmax_sensor'])) * valor['sensor_edge_length'])/10)
+```
 
 ## 5. Resultados
 
