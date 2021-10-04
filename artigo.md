@@ -185,7 +185,7 @@ Figura 5: Desempenho da velocidade média de cada fluxo/rota (linha vermelha) em
 
 ## 4. Experimento
 
-Para que o comportamento dos veículos se aproxime com a situação reportada, onde o nível de ocupação das vias gera um impacto na velocidade média dos fluxos, serão dicionados mais veículos a simulação. O processo de adição de veículos irá seguir o seguinte fluxo:
+Para que o comportamento dos veículos se aproxime com a situação reportada, onde o nível de ocupação das vias gera um impacto na velocidade média dos fluxos, serão dicionados mais veículos a simulação. O processo de adição de veículos irá seguir a seguinte ordem:
 
 ```mermaid
 graph TD;
@@ -204,7 +204,14 @@ A imprementação de um processo com sucessivas simulações tem o intuito de au
 
 Em cada ciclo envolvendo simulação e avaliação dos resultados, são realizadas considerações a respeito de quais fluxos devem receber veículos adicionais primeiro, qual o número de veículos serão adicionados para a próxima simulação ou se o resultado já está próximo o suficiente do esperado, o que implica na finalização do processo. O envolvimento da prioridade da via em consideração a ordem que são adicionados veículos implica que as vias principais possuem preferência nas interseções viárias, e portanto geram uma dependência no fluxo das vias secundárias e terciárias.
 
-A definição do número de veículos a serem adicionados é decidida combinando a diferênça entre a velocidade média esperada da obtida no ciclo atual, multiplicado o comprimento esperado de congestionamento ou atraso no trecho. A seguinte expressão foi utilizada para se obter o índice de crescimento, a granularidade da graduação pode ser definida pela divisão do resultado obtido, neste caso adotou-se 10:
+A definição do número de veículos a serem adicionados é decidida combinando a diferênça entre a velocidade média esperada da obtida no ciclo atual, multiplicado o comprimento esperado de congestionamento ou atraso no trecho. A seguinte expressão foi utilizada para se obter o índice de crescimento, a granularidade pode ser definida pela divisão do resultado obtido, neste caso adotou-se 10:
+
+variável           | descrição
+-------------------|------------------------------------------------------------------------------------
+demanda_anterior   | número de veículos alocados na última simulação, por rota
+sumo_sensor_speed  | velocidade média capturada pelo sensor, relativo a cada rota
+vmax_sensor        | velocidade máxima segundo o Google Traffic, no trecho onde está localizado o sensor
+snesor_edge_lenght | comprimento do trecho, que possue a cor atribuída pelo Google Traffic
 
 ```python
 np.ceil((demanda_anterior + ((abs(valor['sumo_sensor_speed'] - valor['vmax_sensor'])) * valor['sensor_edge_length'])/10)
