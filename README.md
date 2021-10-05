@@ -1,4 +1,4 @@
-**Resumo** - O presente artigo detalha a pesquisa exploratória, voltada ao problema da ausência de contagens de veículos para o planejamento urbano, a hipótese prevê a utilização do SUMO um simulador microscópico de trânsito, para obter características do fluxo de veículos a partir de informações disponibilizadas abertamente em serviços de navegação veicular, especificamente o Google Maps traffic. Para as simulações foi selecionada uma interseção viária complexa, compreendendo uma rótula entre vias de várias classes. Pela natureza das informações disponibilizadas pelo Google Traffic, seu nível de detalhe aumenta quanto maior o número de conflitos ou congestionamentos, desta maneira o horário selecionado foi o pico da tarde, das 18:00 horas até as 19:00 horas. O objetivo é que se tenha uma estimativa do número de veículos, para que se possa utilizar como variáveis de entrada em outros cenários de simulação no próprio SUMO.
+**Resumo** - O presente artigo detalha a pesquisa exploratória voltada ao problema da ausência de contagens de veículos para o planejamento urbano, a hipótese prevê a utilização do SUMO um simulador microscópico de trânsito, para obter características do fluxo de veículos a partir de informações disponibilizadas abertamente em serviços de navegação veicular, especificamente o Google Maps traffic. Foi selecionada uma interseção viária complexa, compreendendo uma rótula entre vias de várias classes. Pela natureza das informações disponibilizadas pelo Google Traffic seu nível de detalhe aumenta quanto maior o número de conflitos ou congestionamentos, desta maneira o horário selecionado foi o pico da tarde, das 18:00 horas até as 19:00 horas. O objetivo é que se tenha uma estimativa do número de veículos, para serem utilizados como variáveis de entrada em outros cenários de simulação no próprio SUMO.
 
 Palavras chave - Mapa de tráfego, Simulador SUMO, Google Traffic, contagem de tráfego.
 
@@ -10,27 +10,29 @@ Keywords - Traffic Map, SUMO Simulator, Google Traffic, Traffic Count.
 
 O crescimento acelerado das cidades, principalmente a partir da década de 1970, resultou no aumento da frota de veículos, principalmente individuais motorizados.
 
-Evolução na Frota de Veículos dos municípios do entorno da BR 101/SC - 2010 e 2019
+Tabela 1: Evolução na Frota de Veículos dos municípios do entorno da BR 101/SC - 2010 e 2019.
 
 Variável          | 2010       | 2019        | % de Crescimento | Estimativa para 2029
 ------------------|------------|-------------|------------------|---------------------
 Frota de veículos | 1.7 milhão | 2.6 milhões | 52,9%            | 4.5 milhões
+
 Fonte: Denatran - Elaboração e compilação FIESC/GETMS
 
-A demanda acelerada por mobilidade e subsequentemente pressão na infra estrutura viária, se manifesta com congestionamentos e decaimento no nível de serviços de vias. Ao mesmo tempo eleva o consumo de combustíveis e os níveis de poluição. Enquanto se por um lado setor público tem investido na análise das redes viárias, a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços, com a intenção de auxiliar o grande número de pessoas atingidas. O modelo adotado é o colaborativo, onde cada usuário reporta em tempo real sua situação para a rede. Outra característica, a fim de garantir a adequação às leis de proteção de dados e o anonimato de seus usuários, é a de que os dados são em grande parte qualitativos, limitando-se a exibir apenas as condições de tráfego, sem detalhes sobre as quantidades, por tipos de veículos ou condutores.
+A demanda acelerada por mobilidade e subsequentemente pressão na infra estrutura viária se manifesta com congestionamentos e decaimento no nível de serviços de vias, ao mesmo tempo eleva o consumo de combustíveis e os níveis de poluição. Enquanto se por um lado o setor público tem investido na análise das redes viárias, a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços com a intenção de auxiliar o grande número de pessoas atingidas. O modelo adotado é o colaborativo, onde cada usuário reporta em tempo real sua situação para a rede. Outra característica a fim de garantir a adequação às leis de proteção de dados e o anonimato de seus usuários, é a de que os dados são em grande parte qualitativos, limitando-se a exibir apenas as condições de tráfego sem detalhes sobre as quantidades, por tipos de veículos ou condutores.
 
-Apesar de apresentar apenas uma fração, no que diz respeito às informações necessárias para o planejamento pelo poder público, onde a contagem do fluxo de veículos é um dos insumos primários de qualquer análise do sistema viário, os aplicativos compensam oferecendo disponibilidade e abrangência tanto temporal quanto espacial.
+Apesar de apresentar apenas uma fração, no que diz respeito às informações necessárias para o planejamento pelo poder público, onde a contagem do fluxo de veículos é um dos insumos primários de qualquer análise do sistema viário, os aplicativos compensam oferecendo menor custo com maior disponibilidade e abrangência, tanto temporal quanto espacial.
 
-As provas realizadas buscam reunir as características do tráfego, reportadas pelos aplicativos, as características físicas da malha viária e regulamentação de trânsito, para preencher parâmetros desconhecidos, neste caso o número de veículos, através da simulação utilizando-se do SUMO.
+As provas realizadas buscam reunir as características do tráfego reportadas pelos aplicativos e a modelagem da malha viária com regulamentação do trânsito, para preencher parâmetros desconhecidos, neste caso o número de veículos, através da simulação utilizando-se do SUMO.
 
 ## 2. Conceitos básicos
 
 ### "Simulation of Urban MObility" (SUMO)
-A simulação de sistema de transporte como ferramenta de análise, tem a habilidade de emular a variação do tempo sobre a enorme quantidade de variáveis que surgem ao redor do trânsito, é utilizada para predizer o resultado de um sistema real. Dentre os modelos destacam-se:
 
-- Macroscópico, onde o fluxo macroscópico (densidade, volume e velocidade) são caracterizados e utilizam-se cálculos como na dinâmica computacional de fluídos. Este modelo aborda o problema de fluxo de tráfego em um nível baixo de detalhes, não existindo interesse por cada unidade individual, e sim no processo como um todo.
+A simulação de sistema de transporte como ferramenta de análise tem a habilidade de emular a variação do tempo sobre a enorme quantidade de variáveis que surgem ao redor do trânsito, é utilizada para predizer o resultado de um sistema real. Dentre os modelos destacam-se:
 
-- Microscópico, é apropriado para estudos com elevado nível de detalhamento, baseado na descrição do movimento de cada veículo individualmente, cada um com propriedades como troca de faixa, aceleração entre outras. A abordagem mais evidente é a car-following, em que o veículo reage ao veículo imediatamente anterior a ele no fluxo de tráfego.
+- Macroscópico: Onde o fluxo (densidade, volume e velocidade) são caracterizados e utilizam-se cálculos como na dinâmica computacional de fluídos. Este modelo aborda o problema de fluxo de tráfego em um nível baixo de detalhes, não existindo interesse por cada unidade individual e sim no processo como um todo.
+
+- Microscópico: É apropriado para estudos com elevado nível de detalhamento, baseado na descrição do movimento de cada veículo individualmente, cada um com propriedades como troca de faixa, aceleração entre outras. A abordagem mais evidente é a car-following, em que o veículo reage ao veículo imediatamente anterior a ele no fluxo de tráfego.
 
 O SUMO é um simulador Microscópico, o que significa que sua implementação é síncrona, a cada passo da simulação (por padrão um segundo) o estado de todas as entidades do modelo são atualizadas, a rotina pode ser descrita da seguinte maneira:
 
@@ -46,25 +48,25 @@ b. Inserção de veículos: Repete até que seja inserida toda a demanda de trá
 
 c. Resultado: Coleta e apresenta o conjunto de informações a respeito da simulação.
 
-Os arquivos de entrada mínimos necessários, todos XML, são os seguintes:
+Os arquivos de entrada mínimos necessários no padrão XML são os seguintes:
 
 - simulacao.sumocfg: Responsável por indicar o nome dos outros arquivos de entrada e saída da simulação.
 
-- malha.net.xml: Linhas (edges) e vértices (nodes), na forma de um grafo que representa o desenho da malha viária. Também armazena as regras de conversões em cruzamentos e velocidades máximas de cada via e faixas. O módulo Netedit (interface gráfica para desenho da malha) e NetConvert podem ser utilizados.
+- malha.net.xml: Linhas (edges) e vértices (nodes) na forma de um grafo que representa o desenho da malha viária. Também armazena as regras de conversões em cruzamentos e velocidades máximas de cada via e faixas. O módulo Netedit (interface gráfica para desenho da malha) e NetConvert podem ser utilizados.
 
-- demanda.rou.xml: Em resumo contêm a maneira, momento, e quantidade de elementos que irão entrar na malha viária, pode conter uma rota pré definida ou apenas um ponto de origem e destino.
+- demanda.rou.xml: Em resumo contêm a maneira, momento, e quantidade de veículos que irão entrar na malha viária, pode conter uma rota pré definida ou apenas um ponto de origem e destino.
 
-Outros arquivos como um adicional também podem ser incluídos, definindo elementos como sensores e câmeras para contagem em pontos específicos, por exemplo.
+Outros arquivos como um adicional também podem ser incluídos, definindo elementos como sensores e câmeras para contagem em pontos específicos por exemplo.
 
-Os arquivos de saída com os resultados da simulação podem ser solicitados em vários níveis de detalhe, a partir da linha de comando ao se chamar a simulação, como argumento ou dentro do arquivo sumocfg. Os valores podem ser dentre vários disponíveis, os dados completos (--full-output) com a posição e estado dos veículos a cada passo da simulação por trecho do sistema viário, as medições agregadas pela velocidade em cada trecho, tempos de espera, atrasos, consumo de combustível, etc.
+Os arquivos de saída com os resultados da simulação podem ser solicitados em vários níveis de detalhe, a partir da linha de comando ao se chamar a simulação como argumento ou dentro do arquivo sumocfg. Os valores podem conter os dados completos (--full-output), com a posição e estado dos veículos a cada passo da simulação, por trecho do sistema viário, rota ou fluxo, medições agregadas, tempos de espera, atrasos, consumo de combustível, etc.
 
 ### Google Maps Traffic
 
-O a difusão do uso de aplicativos de mapeamento e acesso a celulares com GPS, apresentou uma oportunidade inédita ao que antes tratava apenas de orientação e roteamento. Apple Maps, Waze, Nokia, HERE maps e Mapquest, contam com informações complementares sobre o tráfego, utilizando como fontes a própria contribuição anônima dos usuários do sistema. Dentre estes o Google se destaca desde a compra do Waze em 2013, pelo grande número de usuários e por consequência contribuições para seu serviço.
+Nos últimos anos a difusão do uso de aplicativos de mapeamento e acesso a celulares com GPS, apresentou uma oportunidade inédita ao que antes tratava apenas de orientação e roteamento aos usuários. Serviós como Apple Maps, Waze, Nokia, HERE maps e Mapquest, contam com informações complementares sobre problemas no trânsito, utilizando como fontes a própria contribuição anônima dos usuários do sistema. Dentre estes o Google se destaca desde a compra do Waze em 2013, principalmente pelo grande número de usuários o que por consequência agrega um grande número de contribuições para sua base de informações.
 
-O acesso ao serviço se dá através de dispositivos móveis ou pelo endereço http://maps.google.com, em sua interface o usuário pode navegar até a área de interesse e alternar entre a visualização de temas como satélite, transporte público e por fim o trânsito. Neste existem duas leituras, a padrão é a "Trânsito em tempo real" que pode ser alterada para ̃Trânsito típico", baseado no histórico da área.
+O acesso ao serviço se dá através de dispositivos móveis ou pelo endereço http://maps.google.com, em sua interface o usuário pode navegar até a área de interesse e alternar entre a visualização com temas como satélite, transporte público e por fim o trânsito. Neste existem duas leituras, a padrão é a "Trânsito em tempo real" e que pode ser alterada para  "Trânsito típico", baseado no histórico da área.
 
-Os trechos com irregularidades possuem duas propriedades, o comprimento e cor atribuída ao nível de atraso. O atraso é relativo à velocidade da via.
+Os trechos com irregularidades possuem duas propriedades, o comprimento e cor atribuída ao nível de atraso. O atraso representado por cada cor é relativo à velocidade da via.
 
 - verde: 70% a 100%
 - laranja: 55% a 70%
@@ -75,21 +77,21 @@ Os trechos com irregularidades possuem duas propriedades, o comprimento e cor at
 
 ### Captura de dados
 
-Os dados de trânsito foram capturados no dia 27/08/2021, a partir da opção "Trânsito em tempo" real às 18:39 horas, no endereço do serviço.
+Os dados de trânsito foram capturados no dia 27/08/2021, a partir da opção "Trânsito em tempo real" às 18:39 horas no endereço do serviço.
 
 ![captura de tela, google maps traffic](imagens/2021_08_27_183944_decal.jpg)
 
 Figura 1: Captura de tela do endereço http://maps.google.com
 
-Para facilitar os trabalhos seguintes de digitalização da malha, foi feito o georreferenciamento da imagem no software QGIS, no sistema de referência de coordenadas SIRGAS 2000/UTM zone 22s.
+Para facilitar os trabalhos seguintes de digitalização da malha, foi feito o georreferenciamento da imagem no software QGIS utilizando o sistema de referência de coordenadas SIRGAS 2000/UTM zone 22s.
 
 ### Configuração do SUMO
 
-**A malha viária (.net.xml):** Pode ser obtida de várias maneiras, como a importação de malhas externas, que incluem a conversão através do módulo NETCONVERT, provenientes de arquivos .shp ou até mesmo o OpenStreetMap. Se optou por confeccionar uma malha própria utilizando o módulo Netedit, de maneira a refletir com maior exatidão possível no modelo, as características físicas e a regulamentação de trânsito.
+**- Malha viária (.net.xml):** Pode ser obtida de várias maneiras como a partir de malhas externas, a conversão através do módulo NETCONVERT aceita dados provenientes de arquivos .shp ou até mesmo de serviços online como OpenStreetMap. Se optou por confeccionar uma malha própria utilizando outro módulo dedicado o NETEDIT, com o intuito de mapear com a maior exatidão possível (menor escala gráfica) o modelo, o NETEDIT também permite que sejam acrescidas propriedades adicionais personalizadas, além das características físicas e de regulamentação de trânsito.
 
-A imagem capturada e georreferenciada pode ser inserida no projeto como fundo (background/decal), por se tratar de uma arquivo GeoTIFF, a partir do tratamento da captura no QGIS, este irá assumir as dimensões em metros e localização corretas no Netedit. O processo de digitalização consiste na criação de nós e linhas de um grafo. Os nós assumem as propriedades das interseções viárias, com as regras de conversões permitidas e proibidas para cada faixa. As linhas assumem as características da via como número de faixas e prioridade, foram inseridas ainda propriedades adicionais, além da velocidade máxima regulamentada em cada via, baseando-se nos dados apresentados pelo Google Traffic como influência na velocidade da via pelo atraso nos trechos coloridos:
+A imagem capturada e georreferenciada pôde ser inserida no projeto como fundo (background/decal), por se tratar de uma arquivo GeoTIFF (georreferenciado), este irá assumir as dimensões em metros e localização corretas no NETEDIT. O processo de digitalização consiste na criação de nós e linhas de um grafo. Os nós assumem as propriedades das interseções viárias, com as regras de conversões permitidas e proibidas para cada faixa e as linhas assumem as características das vias,  com número de faixas, prioridade e velocidades permitidas, foram inseridas ainda propriedades adicionais, além da velocidade máxima regulamentada em cada via as cores apresentadas pelo Google Traffic foram convertidas em velocidade (metros por segundo) e acresentadas a cada trecho utilizando o campo 'parameters'.
 
-Intervalo de velocidade nas áreas de conflito, cores Google Maps Traffic:
+Tabela 2: Intervalo de velocidade nas áreas de conflito, cores Google Maps Traffic
 
 nome                          | km/h | m/s | verde m/s   | laranja m/s   | vermelho m/s | vermelho escuro m/s
 ------------------------------|------|-----|-------------|---------------|--------------|--------------------
@@ -102,7 +104,7 @@ R.Pres.João Goulart           | 40   | 11  | 7.7 até 11  | 6.05 até 7.69 | 3.
 
 Figura 2: Módulo Netedit, sobreposição da malha digitalizada pelo autor com a imagem georreferenciada proveniente de captura de tela do Google Maps/Tráfego.
 
-**Atribuição de demanda e rotas (demanda.rou.xml):** A escolha do método de atribuição de tráfego depende da pesquisa conduzida. No mínimo é exigido uma lista de veículos com um tempo de entrada na simulação seguido de um ponto de origem e outro de destino, chamado de trip (viagem) para cada veículo ou flow (fluxo) para grupos de veículos, em ambos os casos a rota ótima é calculada durante a simulação. De maneira a ter controle sobre o fluxo de veículos, foi adotada outra modalidade onde o fluxo, com um número específico de veículos por hora, é atribuído a uma rota pré-definida.
+**- Atribuição de demanda e rotas (demanda.rou.xml):** A escolha do método de atribuição de tráfego depende da pesquisa conduzida, o mínimo exigido consiste de uma lista de veículos, o tempo de entrada na simulação, um ponto de origem e outro de destino, no caso de um único veículo esta descrição se chama trip (viagem), já para grupos de veículos estes são definidos como flow (fluxo), com estas atribuições mínimas a rota ótima é calculada durante a simulação pelo próprio SUMO. Neste estudo as rotas foram determinadas de maneira arbritária reproduzindo os movimentos e conversões encontrados na interseção, agrupados pela orientação de acesso que mais tarde se tornarão os pontos de interesse de contagem de veículos. Abaixo a forma que o padrão XML descreve o conjunto sucessivo de edges para formar duas rotas, já na sequência dois fluxos (veículos por hora) são atribuídos a cada uma destas rotas, ao fim o atributo 'number' se refere ao número de veículos que este fluxo irá alocar a simulação, configurada para duração de uma hora.
 
 ```xml
 <route edges="gneE0 gneE1 gneE2 gneE3 gneE4" color="yellow" id="route_0" />
@@ -118,15 +120,15 @@ Figura 2: Módulo Netedit, sobreposição da malha digitalizada pelo autor com a
 
 Figura 3: Rotas definidas que devem receber os fluxos de veículos.
 
-**Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores por indução, câmeras dentre outros que podem ser inseridos na malha, em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos da malha. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele.
+**- Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores que podem ser posicionados na malha como câmeras, por indução dentre outros. Em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele. Abaixo a descrição de um sensor atribuído a uma faixa, seguido pelo camilho do arquivo em que os resultados serão gravados ao fim da simulação.
 
 ```xml
-<e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="8.00" freq="300.00" file="resultados/detectores/991605.xml" />
+<e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="8.00" freq="300.00" file="resultados/detectores/e1_cliclo_1.xml" />
 ```
 
 ### Relatórios
 
-A simulação foi configurada com a duração de uma hora, avançando com um passo a cada segundo. Os resultados são armazenados no padrão XML, foram selecionados e utilizados dois arquivos de saída de dados:
+A simulação foi configurada com a duração de uma hora, avançando com um passo a cada segundo. Os resultados são armazenados no padrão XML e foram utilizados dois arquivos de saída de dados:
 
 **- "full-output":** (```<full-output value="full.output.xml"/>```) definido no arquivo simulacao.sumocfg, contém informações sobre todas as linhas e veículos a cada passo da simulação. Dentre os vários valores coletados destacam-se os seguintes que foram utilizados:
 
