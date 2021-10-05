@@ -1,3 +1,13 @@
+# Estimação de fluxos veiculares utilizando dados de navegação móvel e simuladores de tráfego.
+
+**Jaceguay Zukoski**
+
+2019/II (1401) Curso de Especialização em Big Data – Turma II
+
+Campus Itajaí Rua Uruguai, 458 - Centro/ Itajaí - SC CEP: 88302-901
+
+Universidade do Vale de Itajaí (UNIVALI) – Itajaí, SC – Brasil
+
 **Resumo** - O presente artigo detalha a pesquisa exploratória voltada ao problema da ausência de contagens de veículos para o planejamento urbano, a hipótese prevê a utilização do SUMO um simulador microscópico de trânsito, para obter características do fluxo de veículos a partir de informações disponibilizadas abertamente em serviços de navegação veicular, especificamente o Google Maps traffic. Foi selecionada uma interseção viária complexa, compreendendo uma rótula entre vias de várias classes. Pela natureza das informações disponibilizadas pelo Google Traffic seu nível de detalhe aumenta quanto maior o número de conflitos ou congestionamentos, desta maneira o horário selecionado foi o pico da tarde, das 18:00 horas até as 19:00 horas. O objetivo é que se tenha uma estimativa do número de veículos, para serem utilizados como variáveis de entrada em outros cenários de simulação no próprio SUMO.
 
 Palavras chave - Mapa de tráfego, Simulador SUMO, Google Traffic, contagem de tráfego.
@@ -56,13 +66,13 @@ Os arquivos de entrada mínimos necessários no padrão XML são os seguintes:
 
 - demanda.rou.xml: Em resumo contêm a maneira, momento, e quantidade de veículos que irão entrar na malha viária, pode conter uma rota pré definida ou apenas um ponto de origem e destino.
 
-Outros arquivos como um adicional também podem ser incluídos, definindo elementos como sensores e câmeras para contagem em pontos específicos por exemplo.
+Outros arquivos como um adicional também podem ser incluídos, definindo elementos como sensores e câmeras para contagem em pontos específicos, por exemplo.
 
 Os arquivos de saída com os resultados da simulação podem ser solicitados em vários níveis de detalhe, a partir da linha de comando ao se chamar a simulação como argumento ou dentro do arquivo sumocfg. Os valores podem conter os dados completos (--full-output), com a posição e estado dos veículos a cada passo da simulação, por trecho do sistema viário, rota ou fluxo, medições agregadas, tempos de espera, atrasos, consumo de combustível, etc.
 
 ### Google Maps Traffic
 
-Nos últimos anos a difusão do uso de aplicativos de mapeamento e acesso a celulares com GPS, apresentou uma oportunidade inédita ao que antes tratava apenas de orientação e roteamento aos usuários. Serviós como Apple Maps, Waze, Nokia, HERE maps e Mapquest, contam com informações complementares sobre problemas no trânsito, utilizando como fontes a própria contribuição anônima dos usuários do sistema. Dentre estes o Google se destaca desde a compra do Waze em 2013, principalmente pelo grande número de usuários o que por consequência agrega um grande número de contribuições para sua base de informações.
+Nos últimos anos a difusão do uso de aplicativos de mapeamento e acesso a celulares com GPS, apresentou uma oportunidade inédita ao que antes tratava apenas de orientação e roteamento aos usuários. Serviços como Apple Maps, Waze, Nokia, HERE maps e Mapquest, contam com informações complementares sobre problemas no trânsito, utilizando como fontes a própria contribuição anônima dos usuários do sistema. Dentre estes o Google se destaca desde a compra do Waze em 2013, principalmente pelo grande número de usuários e por consequência maior número de contribuições para sua base de informações.
 
 O acesso ao serviço se dá através de dispositivos móveis ou pelo endereço http://maps.google.com, em sua interface o usuário pode navegar até a área de interesse e alternar entre a visualização com temas como satélite, transporte público e por fim o trânsito. Neste existem duas leituras, a padrão é a "Trânsito em tempo real" e que pode ser alterada para  "Trânsito típico", baseado no histórico da área.
 
@@ -87,9 +97,9 @@ Para facilitar os trabalhos seguintes de digitalização da malha, foi feito o g
 
 ### Configuração do SUMO
 
-**- Malha viária (.net.xml):** Pode ser obtida de várias maneiras como a partir de malhas externas, a conversão através do módulo NETCONVERT aceita dados provenientes de arquivos .shp ou até mesmo de serviços online como OpenStreetMap. Se optou por confeccionar uma malha própria utilizando outro módulo dedicado o NETEDIT, com o intuito de mapear com a maior exatidão possível (menor escala gráfica) o modelo, o NETEDIT também permite que sejam acrescidas propriedades adicionais personalizadas, além das características físicas e de regulamentação de trânsito.
+**- Malha viária (.net.xml):** Pode ser obtida de várias maneiras como a partir de malhas externas, através do módulo NETCONVERT pode utilizar dados provenientes de arquivos .shp ou até mesmo de serviços online como OpenStreetMap. Se optou por confeccionar uma malha própria utilizando outro módulo dedicado o NETEDIT, com o intuito de mapear com a maior exatidão possível (menor escala gráfica) o modelo, o NETEDIT também permite que sejam acrescidas propriedades adicionais personalizadas, além das características físicas e de regulamentação de trânsito.
 
-A imagem capturada e georreferenciada pôde ser inserida no projeto como fundo (background/decal), por se tratar de uma arquivo GeoTIFF (georreferenciado), este irá assumir as dimensões em metros e localização corretas no NETEDIT. O processo de digitalização consiste na criação de nós e linhas de um grafo. Os nós assumem as propriedades das interseções viárias, com as regras de conversões permitidas e proibidas para cada faixa e as linhas assumem as características das vias,  com número de faixas, prioridade e velocidades permitidas, foram inseridas ainda propriedades adicionais, além da velocidade máxima regulamentada em cada via as cores apresentadas pelo Google Traffic foram convertidas em velocidade (metros por segundo) e acresentadas a cada trecho utilizando o campo 'parameters'.
+A imagem capturada e georreferenciada pôde ser inserida no projeto como fundo (background/decal), por se tratar de uma arquivo GeoTIFF (georreferenciado), este irá assumir as dimensões em metros e localização corretas no NETEDIT. O processo de digitalização consiste na criação de nós e linhas de um grafo. Os nós assumem as propriedades das interseções viárias, com as regras de conversões permitidas e proibidas para cada faixa e as linhas assumem as características das vias,  com número de faixas, prioridade e velocidades permitidas, foram inseridas ainda propriedades adicionais, além da velocidade máxima regulamentada em cada via as cores apresentadas pelo Google Traffic foram convertidas em velocidade (metros por segundo) e acrescentadas a cada trecho utilizando o campo 'parameters'.
 
 Tabela 2: Intervalo de velocidade nas áreas de conflito, cores Google Maps Traffic
 
@@ -104,7 +114,7 @@ R.Pres.João Goulart           | 40   | 11  | 7.7 até 11  | 6.05 até 7.69 | 3.
 
 Figura 2: Módulo Netedit, sobreposição da malha digitalizada pelo autor com a imagem georreferenciada proveniente de captura de tela do Google Maps/Tráfego.
 
-**- Atribuição de demanda e rotas (demanda.rou.xml):** A escolha do método de atribuição de tráfego depende da pesquisa conduzida, o mínimo exigido consiste de uma lista de veículos, o tempo de entrada na simulação, um ponto de origem e outro de destino, no caso de um único veículo esta descrição se chama trip (viagem), já para grupos de veículos estes são definidos como flow (fluxo), com estas atribuições mínimas a rota ótima é calculada durante a simulação pelo próprio SUMO. Neste estudo as rotas foram determinadas de maneira arbritária reproduzindo os movimentos e conversões encontrados na interseção, agrupados pela orientação de acesso que mais tarde se tornarão os pontos de interesse de contagem de veículos. Abaixo a forma que o padrão XML descreve o conjunto sucessivo de edges para formar duas rotas, já na sequência dois fluxos (veículos por hora) são atribuídos a cada uma destas rotas, ao fim o atributo 'number' se refere ao número de veículos que este fluxo irá alocar a simulação, configurada para duração de uma hora.
+**- Atribuição de demanda e rotas (demanda.rou.xml):** A escolha do método de atribuição de tráfego depende da pesquisa conduzida, o mínimo exigido consiste de uma lista de veículos, o tempo de entrada na simulação, um ponto de origem e outro de destino, no caso de um único veículo esta descrição se chama trip (viagem), já para grupos de veículos estes são definidos como flow (fluxo), com estas atribuições mínimas a rota ótima é calculada durante a simulação pelo próprio SUMO. Neste estudo as rotas foram determinadas de maneira arbitrária reproduzindo os movimentos e conversões encontrados na interseção, agrupados pela orientação de acesso que mais tarde se tornarão os pontos de interesse de contagem de veículos. Abaixo a forma que o padrão XML descreve o conjunto sucessivo de edges para formar duas rotas, já na sequência dois fluxos (veículos por hora) são atribuídos a cada uma destas rotas, ao fim o atributo 'number' se refere ao número de veículos que este fluxo irá alocar a simulação, configurada para duração de uma hora.
 
 ```xml
 <route edges="gneE0 gneE1 gneE2 gneE3 gneE4" color="yellow" id="route_0" />
@@ -120,7 +130,7 @@ Figura 2: Módulo Netedit, sobreposição da malha digitalizada pelo autor com a
 
 Figura 3: Rotas definidas que devem receber os fluxos de veículos.
 
-**- Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores que podem ser posicionados na malha como câmeras, por indução dentre outros. Em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele. Abaixo a descrição de um sensor atribuído a uma faixa, seguido pelo camilho do arquivo em que os resultados serão gravados ao fim da simulação.
+**- Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores que podem ser posicionados na malha como câmeras, por indução dentre outros. Em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele. Abaixo a descrição de um sensor atribuído a uma faixa, seguido pelo caminho do arquivo em que os resultados serão gravados ao fim da simulação.
 
 ```xml
 <e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="8.00" freq="300.00" file="resultados/detectores/e1_cliclo_1.xml" />
@@ -283,7 +293,7 @@ A partir da comparação da análise dos valores obtidos no cenário simulado e 
 
 Apesar dos resultados expressos neste artigo, o SUMO por se tratar de um simulador de tráfego microscópico permite um grande número de variáveis, desde o comportamento individual de cada veículo por tipo e condutor, é imprescindível que sejam aprofundados os estudos utilizando-se estas capacidades. A pesquisa abordou uma modelagem detalhada das condições da via, considerando a infinidade de situações encontradas em toda a extensão do sistema viário, este estudo deve ser considerado como uma primeira etapa de uma investigação mais abrangente.
 
-## Referências
+## 8. Referências
 
 - GOOGLE MAPS, 2021. Av. Ver. Abrahão João Francisco - Centro Itajaí - SC, 1:1.500. Google Maps [online]. Disponível:  Google Maps <https://www.google.com.br/maps/@-26.9359751,-48.6964524,16.77z>, acesso em: 27 de ago. de 2021;
 
