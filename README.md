@@ -130,7 +130,7 @@ Figura 2: Módulo Netedit, sobreposição da malha digitalizada pelo autor com a
 
 Figura 3: Rotas definidas que devem receber os fluxos de veículos.
 
-**- Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores que podem ser posicionados na malha como câmeras, por indução dentre outros. Em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele. Abaixo a descrição de um sensor atribuído a uma faixa, seguido pelo caminho do arquivo em que os resultados serão gravados ao fim da simulação.
+**- Sensores (adicionais.xml):** Um arquivo adicional com a descrição de sensores que podem ser posicionados na malha como câmeras, indução dentre outros. Em contrapartida aos resultados que o sumo apresenta ao fim da simulação, estes têm a vantagem de coletarem dados de maneiras e pontos específicos. Os sensores utilizados foram de indução (Induction Loops Detectors - E1), um sensor simples que mede as propriedades dos veículos à medida que passam sobre ele. Abaixo a descrição de um sensor atribuído a uma faixa, seguido pelo caminho do arquivo em que os resultados serão gravados.
 
 ```xml
 <e1Detector id="e1Detector_gneE12_0_6" lane="gneE12_0" pos="8.00" freq="300.00" file="resultados/detectores/e1_cliclo_1.xml" />
@@ -138,11 +138,11 @@ Figura 3: Rotas definidas que devem receber os fluxos de veículos.
 
 ### Relatórios
 
-A simulação foi configurada com a duração de uma hora, avançando com um passo a cada segundo. Os resultados são armazenados no padrão XML e foram utilizados dois arquivos de saída de dados:
+A simulação foi configurada com a duração de uma hora, avançando com um passo a cada segundo. Os resultados são armazenados no padrão XML, foram utilizados dois arquivos de saída de dados:
 
-**- "full-output":** (```<full-output value="full.output.xml"/>```) definido no arquivo simulacao.sumocfg, contém informações sobre todas as linhas e veículos a cada passo da simulação. Dentre os vários valores coletados destacam-se os seguintes que foram utilizados:
+**- "full-output":** O arquivo ```full.output.xml```, contém informações sobre todas as linhas e veículos a cada passo da simulação, dentre os vários valores coletados destacam-se os seguintes:
 
-atributo      | descrição
+valor         | descrição
 --------------|----------------------------------------------------------------
 vehicle_route | rota a qual o veículo foi atribuído
 vehicle_edge  | faixa a qual o veículo está alocado no passo atual da simulação
@@ -151,11 +151,11 @@ vehicle_speed | velocidade do veículo no passo atual da simulação
 Deste ponto em diante, se torna necessária a manipulação e preparo dos dados, para tanto foi utilizada a linguagem python em conjunto com a biblioteca Pandas, foram obtidas as velocidade médias para cada trecho em cada rota da malha.
 
 ```python
-veic_sumo = veics_sumo.groupby(['vehicle_route', 'vehicle_edge'], as_index=False)[
-    'vehicle_speed'].median()
-
-veic_sumo.head(3)
+veic_sumo = veics_sumo.groupby(['vehicle_route', 'vehicle_edge'],
+                                as_index=False)['vehicle_speed'].median()
 ```
+
+Tabela 3: Amostra da tabela contendo as médias de velocidades que os fluxos desenvolveram ao longo das rotas:
 
 vehicle_route | vehicle_edge | vehicle_speed
 --------------|--------------|--------------
@@ -163,13 +163,13 @@ route_0       | gneE0        | 15.00
 route_0       | gneE1        | 12.12
 route_0       | gneE2        | 5.61
 
-**- "adicionais.xml":** (```<additional-files value="adicionais.xml"/>```) Os detectores foram posicionados em torno da interseção viária, de maneira a capturarem todos os veículos que entram ou saem utilizando as rotas pré definidas.
+**- "adicionais.xml":** A partir do arquivo ```adicionais.xml``` os detectores foram posicionados em torno da interseção viária, de maneira a capturarem todos os veículos que adentram e saem da interseção viária.
 
 ![posição detectores](imagens/detectores_posicao.jpg)
 
 Figura 4: Posicionamento dos detectores na malha.
 
-O arquivo de saída destacando-se as propriedades de interesse, foi tratado em conjunto com as informações da malha viária, a fim de fornecer as seguintes informações:
+Tabela 4: Descrição dos dados obtidos pelos arquivos de saída
 
 atributo    | descrição
 ------------|----------------------------------------------------------------------------------------------
@@ -182,12 +182,16 @@ lenght      | comprimento do trecho (m)
 vmax        | velocidade máxima no trecho, obtida a partir da codificação por cores do Google traffic (m/s)
 vmin        | velocidade mínima no trecho, obtida a partir da codificação por cores do Google traffic (m/s)
 
+A obteção da tabela com os valores agregados foi feita a partir da seguinte expressão:
+
 ```python
 detectores_gb = detectores.groupby(['id']).agg({'speed':'mean', 'nVehEntered':'sum'}).reset_index()
+
 detectores_malha = pd.merge(
     detectores_gb, malha, how='left', on=['id']).reset_index()
-detectores_malha.head(3)
 ```
+
+Tabela 5: Amostra de valores obtidos a partir da união do arquivo de saída dos detectores com as propriedades da malha
 
 id     | speed     | nVehEntered | name                          | priority | length | vmax  | vmin
 -------|-----------|-------------|-------------------------------|----------|--------|-------|-----
@@ -208,24 +212,15 @@ Figura 5: Desempenho da velocidade média de cada fluxo/rota (linha vermelha) em
 
 Para que o comportamento dos veículos se aproxime com a situação reportada, onde o nível de ocupação das vias gera um impacto na velocidade média dos fluxos, serão adicionados mais veículos a simulação. O processo de adição de veículos irá seguir a seguinte ordem:
 
-```mermaid
-graph TD;
-    A[Executar simulação] -->B[Avaliar velocidade média detectada nos trechos];
-    B-->C[existem velocidades superiores às estimadas pelo Google Traffic?];
-    C-->D[não];
-    C-->E[sim];
-    D-->F[finalizar processo];
-    E-->G[selecionar os trechos com maior prioridade e com velocidades excedentes];
-    G-->H[avaliar e aumentar o número de veículos proporcionalmente];
-    H-->I[gravar novo arquivo demanda.rou.xml]
-    I-->A;
-```
+![fluxo do processo](imagens/fluxo_mermaid.png)
 
-A implementação de um processo com sucessivas simulações tem o intuito de aumentar a pressão no sistema viário simulado de maneira gradativa, até o ponto onde a velocidade média de todos os fluxos se aproxime do esperado, esta estratégia foi selecionada no lugar de um modelo universal de previsão, o motivo é a complexidade do sistema e suas particularidades em cada área de estudo, tanto a respeito da geometria viária, sua descrição funcional e interação dos vários fluxos com a malha e entre si. O modelo baseado em simulação se mostra capaz de incorporar estes aspectos de maneira simples.
+A implementação de um processo com sucessivas simulações tem o intuito de aumentar de maneira gradativa a pressão no sistema, até o ponto onde a velocidade média de todos os fluxos se aproxime da situação apresentada pelo aplicativo de navegação, esta estratégia foi selecionada no lugar de um modelo de previsão pela facilidade em utilizar a simulação, apesar da complexidade do cenário considerado e suas particularidades, tanto a respeito da geometria viária, sua descrição funcional e interação dos vários fluxos com a malha e entre si, o modelo baseado em simulação se mostra capaz de incorporar estes aspectos de maneira simples ao usuário.
 
-Em cada ciclo envolvendo simulação e avaliação dos resultados, são realizadas considerações a respeito de quais fluxos devem receber veículos adicionais primeiro, qual o número de veículos serão adicionados para a próxima simulação ou se o resultado já está próximo o suficiente do esperado, o que implica na finalização do processo. O envolvimento da prioridade da via em consideração a ordem que são adicionados veículos implica que as vias principais possuem preferência nas interseções viárias, e portanto geram uma dependência no fluxo das vias secundárias e terciárias.
+Em cada ciclo envolvendo simulação e avaliação dos resultados, são realizadas considerações a respeito de quais fluxos devem receber veículos adicionais primeiro, qual o número de veículos serão adicionados para a próxima simulação ou se o resultado já está próximo o suficiente do esperado, que implica na finalização do processo. A utilização da prioridade da via no processo significa que as vias de prioridades menores só receberão veículos após as de maior prioridade, as vias que possuem preferência nas interseções viárias geram uma dependência no fluxo das vias secundárias e terciárias.
 
-A definição do número de veículos a serem adicionados é decidida combinando a diferença entre a velocidade média esperada da obtida no ciclo atual, multiplicando o comprimento esperado de congestionamento ou atraso no trecho. A seguinte expressão foi utilizada para se obter o índice de crescimento, a granularidade pode ser definida pela divisão do resultado obtido, neste caso adotou-se 10:
+A definição do número de veículos a serem adicionados é decidida combinando a diferença entre a velocidade média esperada da obtida no ciclo atual, multiplicando o comprimento esperado de atraso no trecho (propriedade length). A seguinte expressão foi utilizada para se obter o índice de crescimento, a granularidade pode ser definida pela divisão do resultado obtido, neste caso adotou-se 10:
+
+Tabela 6: Variáveis utilizadas no processo de avaliação dos resultados para criação dos parâmetros para próxima simulação no fluxo
 
 variável           | descrição
 -------------------|------------------------------------------------------------------------------------
@@ -241,6 +236,8 @@ np.ceil((demanda_anterior + ((abs(valor['sumo_sensor_speed'] - valor['vmax_senso
 ## 5. Resultados
 
 Os valores são obtidos ao fim do último ciclo, onde todas as velocidades máximas remanescentes se encontravam abaixo da prevista pelo mapa do Google Traffic. Para realização da contagem de veículos que adentram o cruzamento, quatro grupos foram criados a partir das 15 rotas, provenientes da previsão dos movimentos previstos no SUMO.
+
+Tabela 7: Grupo de rotas por direção de entrada no cruzamento
 
 grupo | rotas
 ------|---------------------------------------------------------
@@ -259,6 +256,8 @@ Figura 7: Desempenho da velocidade média de cada fluxo/rota (linha vermelha) ap
 
 Como a cada passo um novo arquivo 'demanda.rou.xml' é criado para utilização no próximo ciclo, a avaliação da demanda final de veículos atribuídos foram capturados do último arquivo criado.
 
+Tabela 8: Número total de veículos em uma hora, contado ao fim do 30° ciclo
+
 grupo | veículos alocados
 ------|------------------
 oeste | 981
@@ -274,7 +273,7 @@ Para a avaliação os resultados foram comparados com uma contagem feita no loca
 
 Figura 7: Pontos selecionados para contagem.
 
-Tabela comparativa dos valores do resultado com a contagem realizada, como na simulação o valor compreende o total de veículos no período de uma hora.
+Tabela 9: Valores do resultado a partir da simulação e da contagem realizada
 
 grupo | veículos alocados | veículos contagem in loco
 ------|-------------------|--------------------------
@@ -285,13 +284,13 @@ sul   | 660               | 709
 
 ## 6. Conclusão
 
-O objetivo deste artigo foi a avaliação da viabilidade de utilização de um ambiente simulado, para determinar os valores desconhecidos do número de veículos que adentram uma interseção viária, utilizando a modelagem do ambiente e dados de aplicativos de navegação móvel. A estratégia adotada foi o aumento gradual de veículos inseridos na simulação, com o intuito de reproduzir as condições o mais próximas possíveis, que levaram a velocidade média reportada pelo serviço de navegação. O ciclo de aproximação é composto de uma fase de simulação e outra de avaliação de resultados, onde são decididos os valores da próxima simulação.
+O objetivo deste artigo foi a avaliação da viabilidade de utilização de um ambiente simulado na determinação de valores desconhecidos, para se obter o número de veículos que adentram uma interseção viária, utilizou-se a modelagem do ambiente simulado em conjunto com dados de aplicativos de navegação móvel. A estratégia adotada foi o aumento gradual de veículos inseridos na simulação, com o intuito de reproduzir as condições o mais próximas possíveis que levaram a velocidade média reportada pelo serviço de navegação. O ciclo de aproximação é composto de uma fase de simulação e outra de avaliação de resultados, para que seja feita a definição dos valores da próxima simulação ou finalização do processo.
 
 A partir da comparação da análise dos valores obtidos no cenário simulado e dados recolhidos no local, pode-se concluir que o número total de veículos estimados se encontra próximo do observado. Outro ponto importante são as proporções obtidas também serem semelhantes, demonstrando o peso das características do congestionamento coletadas no Google Traffic (velocidade média e comprimento do trecho com atraso).
 
 ## 7. Próximos passos
 
-Apesar dos resultados expressos neste artigo, o SUMO por se tratar de um simulador de tráfego microscópico permite um grande número de variáveis, desde o comportamento individual de cada veículo por tipo e condutor, é imprescindível que sejam aprofundados os estudos utilizando-se estas capacidades. A pesquisa abordou uma modelagem detalhada das condições da via, considerando a infinidade de situações encontradas em toda a extensão do sistema viário, este estudo deve ser considerado como uma primeira etapa de uma investigação mais abrangente.
+Apesar dos resultados expressos neste artigo o SUMO por se tratar de um simulador de tráfego microscópico permite um grande número de variáveis, desde o comportamento individual de cada veículo por tipo e condutor, é imprescindível que sejam aprofundados os estudos utilizando-se estas capacidades. A pesquisa abordou uma modelagem detalhada das condições da via, contudo considerando a infinidade de situações encontradas em toda a extensão do sistema viário, este estudo deve ser considerado como uma primeira etapa de uma investigação mais abrangente.
 
 ## 8. Referências
 

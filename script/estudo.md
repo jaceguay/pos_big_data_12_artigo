@@ -89,3 +89,18 @@ route_9             | 5>4       | 27
 route_10 + route_8  | 5>3       | 254
 route_14 + route_15 | 1>3       | 163
 route_16            | 1>4       | 156
+
+## fluxo
+
+```mermaid
+graph TD;
+    A[Executar simulação] -->B[Avaliar velocidade média detectada nos trechos];
+    B-->C[existem velocidades superiores às estimadas pelo Google Traffic?];
+    C-->D[não];
+    C-->E[sim];
+    D-->F[finalizar processo];
+    E-->G[selecionar os trechos com maior prioridade e com velocidades excedentes];
+    G-->H[avaliar e aumentar o número de veículos proporcionalmente];
+    H-->I[gravar novo arquivo demanda.rou.xml]
+    I-->A;
+```
