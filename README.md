@@ -12,7 +12,7 @@ Universidade do Vale de Itajaí (UNIVALI) – Itajaí, SC – Brasil
 
 Palavras chave - Mapa de tráfego, Simulador SUMO, Google Traffic, contagem de tráfego.
 
-**Abstract** - This article details the exploratory research, focused on the problem of the absence of vehicle counts for urban planning, the hypothesis foresees the use of SUMO, a microscopic traffic simulator, to obtain the flow of vehicles from information openly available in mobile device navigation apps, specifically Google Maps traffic. For the simulations a complex road intersection was selected, comprising a roundabout between roads of various classes. Due to the nature of the information provided by Google Traffic, its level of detail relate directly to the amount of traffic jams and irregularities in the current view, the selected time was the peak of the afternoon, from 6:00 pm to 7:00 pm. The objective is to have an estimate of the number of vehicles, so that it can be used as input variables in other simulation scenarios in SUMO itself.
+**Abstract** - This article details the exploratory research, focused on the problem of the absence of vehicle counts for urban planning, the hypothesis foresees the use of SUMO, a microscopic traffic simulator, to obtain the flow of vehicles from information openly available in mobile device navigation apps, specifically Google Maps traffic. For the simulations a complex road intersection was selected, comprising a roundabout between roads of various classes. Due to the nature of the information provided by Google Traffic, its level of detail relates directly to the amount of traffic jams and irregularities in the current view, the selected time was the peak of the afternoon, from 6:00 pm to 7:00 pm. The objective is to have an estimate of the number of vehicles, so that it can be used as input variables in other simulation scenarios in SUMO itself.
 
 Keywords - Traffic Map, SUMO Simulator, Google Traffic, Traffic Count.
 
@@ -182,7 +182,7 @@ lenght      | comprimento do trecho (m)
 vmax        | velocidade máxima no trecho, obtida a partir da codificação por cores do Google traffic (m/s)
 vmin        | velocidade mínima no trecho, obtida a partir da codificação por cores do Google traffic (m/s)
 
-A obteção da tabela com os valores agregados foi feita a partir da seguinte expressão:
+A obtenção da tabela com os valores agregados foi feita a partir da seguinte expressão:
 
 ```python
 detectores_gb = detectores.groupby(['id']).agg({'speed':'mean', 'nVehEntered':'sum'}).reset_index()
