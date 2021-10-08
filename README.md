@@ -18,23 +18,21 @@ O crescimento das cidades em conjunto com políticas exclusivas para destinaçã
 
 Em proposta realizada pela Federação das Indústrias do Estado de Santa Catarina, BR101 do futuro, 2020, com foco no litoral Catarinense. É apresentado um diagnóstico a respeito da demanda acelerada por mobilidade e subsequentemente pressão na infra estrutura viária, se manifestando com congestionamentos, impactos sociais e econômicos. São propostos investimentos crescentes e concentrados no transporte rodoviário com o intuito de manter níveis de serviço e segurança.
 
-Enquanto se por um lado o setor público tem investido em propostas a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços com a intenção de auxiliar o grande número de pessoas atingidas. Uma das ferramentas comercialmente disponíveis é o Google Maps Traffic, seu modelo que em 2007 era constituído por dados de tráfego divulgados por órgãos gestores e empresas, em 2012 passa a incorporar um modelo colaborativo onde cada usuário reporta em tempo real sua situação para a rede (Google, 2021), o dado é anonimizado e retorna ao usuário de forma qualitativa no que diz respeito as condições de tráfego, sem detalhes sobre as quantidades de veículos ou condutores. Quanto a abrangência, apesar do Google não informar o número de usuários do serviço de navegação no Brasil, no mundo é usada por mais de um bilhão de pessoas mensalmente (Google, 2020). A plataforma móvel da qual depende o serviço, segundo levantamento do IBGE em 2019 foi o principal meio de acesso à 183,3 milhões de brasileiros.
+Enquanto se por um lado o setor público tem investido em propostas a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços com a intenção de auxiliar o grande número de pessoas atingidas. Uma das ferramentas comercialmente disponíveis é o Google Maps Traffic, seu modelo que em 2007 era constituído por dados de tráfego divulgados por órgãos gestores e empresas, em 2012 passa a incorporar um modelo colaborativo onde cada usuário reporta em tempo real sua situação para a rede (Google, 2021), o dado é anonimizado e retorna ao usuário de forma qualitativa no que diz respeito as condições de tráfego, sem detalhes sobre as quantidades de veículos ou condutores. Quanto a abrangência, apesar do Google não informar o número de usuários do serviço de navegação no Brasil, no mundo é usada por mais de um bilhão de pessoas mensalmente (Google, 2020). A plataforma móvel da qual depende o serviço, segundo levantamento do IBGE em 2019 foi o principal meio de acesso à internet para 183,3 milhões de brasileiros.
 
 O Manual de Estudos de Tráfego elaborado pelo Departamento Nacional de Infraestrutura de Transportes, relaciona os modelos e processos envolvidos no planejamento viário que se inicam com os procedimentos básicos para estudos e avaliação do tráfego atual, as contagens demandam a mobilização de pessoal e equipamentos especializados gerando impacto nos custos e disponibilidade das mesmas. Dentre os levantamentos o conhecimento dos períodos de pico é de grande importância na determinação do Volume Horário de Projeto (DNIT, 2006).
 
-As provas realizadas buscam reunir as características do tráfego reportadas pelos aplicativos e a modelagem da malha viária com regulamentação do trânsito, utilizando a regressão por simulação de dados para preencher o número de veículos na determinação do volume horário. Considerando a escala de uma interseção viária inividual foi adotado o modelo microscópico (os veículos são tratados individualmente e utilizam a teoria da perseguição ou car-following) em oposição ao macroscópico (modelos tudo-ou-nada, Estocásticos ou de Equilíbrio)
+As provas realizadas buscam reunir as características do tráfego reportadas pelos aplicativos e a modelagem da malha viária com regulamentação do trânsito, utilizando a regressão por simulação de dados para preencher o número de veículos no volume horário. Na pesquisa de tráfego quatro classes de modelos de fluxo se distinguem de acordo com o nível de detalhamento da simulação. Em modelos macroscópicos o próprio fluxo de tráfego é a entidade básica. Modelos microscópicos simulam o movimento de cada veículos na via, de maneira geral assumindo que o comportamento do veículo depende das capacidades física do veículo e o comportamento do motorista. (Chowdhury, D., L. Santen, A. Schadschneider, 2018).
+
+Modelos macroscópicos possuem normalmente uma execução rápida por se limitarem a média em que os fluxos de veículos se comportam, são caracterizados por cálculos como na dinâmica computacional de fluídos, possuem um nível baixo de detalhes uma vez que não existe interesse por cada unidade individual e sim no processo como um todo. Quando a necessidade de simular rotas individuais os modelos microscópicos são mais precisos (Chowdhury, D., L. Santen, A. Schadschneider, 2018).
+
+Considerando a escala de uma interseção viária inividual foi adotado o modelo microscópico (os veículos são tratados individualmente e utilizam a teoria da perseguição ou car-following) em oposição ao macroscópico (modelos tudo-ou-nada, Estocásticos ou de Equilíbrio).
 
 ## 2. Conceitos básicos
 
 ### "Simulation of Urban MObility" (SUMO)
 
-A simulação de sistema de transporte como ferramenta de análise tem a habilidade de emular a variação do tempo sobre a enorme quantidade de variáveis que surgem ao redor do trânsito, é utilizada para predizer o resultado de um sistema real. Dentre os modelos destacam-se:
-
-- Macroscópico: Onde o fluxo (densidade, volume e velocidade) são caracterizados e utilizam-se cálculos como na dinâmica computacional de fluídos. Este modelo aborda o problema de fluxo de tráfego em um nível baixo de detalhes, não existindo interesse por cada unidade individual e sim no processo como um todo.
-
-- Microscópico: É apropriado para estudos com elevado nível de detalhamento, baseado na descrição do movimento de cada veículo individualmente, cada um com propriedades como troca de faixa, aceleração entre outras. A abordagem mais evidente é a car-following, em que o veículo reage ao veículo imediatamente anterior a ele no fluxo de tráfego.
-
-O SUMO é um simulador Microscópico, o que significa que sua implementação é síncrona, a cada passo da simulação (por padrão um segundo) o estado de todas as entidades do modelo são atualizadas, a rotina pode ser descrita da seguinte maneira:
+A simulação de sistema de transporte como ferramenta de análise tem a habilidade de emular a variação do tempo sobre a enorme quantidade de variáveis que surgem ao redor do trânsito, é utilizada para predizer o resultado de um sistema real. O SUMO é um simulador Microscópico, o que significa que sua implementação é síncrona, a cada passo da simulação (por padrão um segundo) o estado de todas as entidades do modelo são atualizadas, a rotina pode ser descrita da seguinte maneira:
 
 a. Inicialização: Calcula o menor caminho, a partir da origem para o destino pré definido.
 
@@ -294,9 +292,15 @@ Apesar dos resultados expressos neste artigo o SUMO por se tratar de um simulado
 
 - GOOGLE MAPS, 2021. Av. Ver. Abrahão João Francisco - Centro Itajaí - SC, 1:1.500. Google Maps [online]. Disponível em:  Google Maps <https://www.google.com.br/maps/@-26.9359751,-48.6964524,16.77z>, acesso em: 27 de ago. de 2021;
 
+- GOOGLE MAPS SUPPORT. Disponível em: <https://support.google.com/maps/answer/3092439>, acesso em: 01 de set. de 2021;
+
 - OFFICIAL MAPS BLOG. A look back at 15 years of mapping the world, 2020 [online]. Disponível em:  <https://blog.google/products/maps/look-back-15-years-mapping-world/>, acesso em: 27 de ago. de 2021;
 
-- SUMO WIKI. Simulação do Urban Mobility – Wiki. Disponível em <https://sumo.dlr.de/wiki/Simulation_of_Urban_MObility_-_Wiki>, acesso em: 01 de ago. de 2021;
+- SUMO WIKI. Simulação do Urban Mobility – Wiki. Disponível em: <https://sumo.dlr.de/wiki/Simulation_of_Urban_MObility_-_Wiki>, acesso em: 01 de ago. de 2021;
+
+- P. A. Lopez et al., "Microscopic Traffic Simulation using SUMO," 2018 21st International Conference on Intelligent Transportation Systems (ITSC), 2018, pp. 2575-2582, doi: 10.1109/ITSC.2018.8569938.
+
+- D. Chowdhury, L. Santen, A. Schadschneider, Statistical physics of vehicular trafficand some related systems, Phys. Rep. 329
 
 - DNIT. Manual de estudos de tráfego. Rio de Janeiro, 2006. 384 p. IPR-723;
 
