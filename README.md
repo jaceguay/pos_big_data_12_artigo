@@ -8,31 +8,21 @@ Campus Itajaí Rua Uruguai, 458 - Centro/ Itajaí - SC CEP: 88302-901
 
 Universidade do Vale de Itajaí (UNIVALI) – Itajaí, SC – Brasil
 
-**Resumo** - O presente artigo detalha a pesquisa exploratória voltada ao problema da ausência de contagens de veículos para o planejamento urbano, a hipótese prevê a utilização do SUMO um simulador microscópico de trânsito, para obter características do fluxo de veículos a partir de informações disponibilizadas abertamente em serviços de navegação veicular, especificamente o Google Maps traffic. Foi selecionada uma interseção viária complexa, compreendendo uma rótula entre vias de várias classes. Pela natureza das informações disponibilizadas pelo Google Traffic seu nível de detalhe aumenta quanto maior o número de conflitos ou congestionamentos, desta maneira o horário selecionado foi o pico da tarde, das 18:00 horas até as 19:00 horas. O objetivo é que se tenha uma estimativa do número de veículos, para serem utilizados como variáveis de entrada em outros cenários de simulação no próprio SUMO.
+**Resumo** - O presente artigo detalha a pesquisa exploratória voltada ao problema da ausência de contagens de veículos para o planejamento urbano, a hipótese prevê a utilização do SUMO um simulador microscópico de trânsito, para obter características do fluxo de veículos a partir de informações disponibilizadas abertamente em serviços de navegação veicular, especificamente o Google Maps traffic. Foi selecionada uma interseção viária complexa, compreendendo uma rótula entre vias de várias classes. O horário selecionado foi o pico da tarde, das 18:00 horas até as 19:00 horas. O objetivo é que se tenha uma estimativa do número de veículos.
 
 Palavras chave - Mapa de tráfego, Simulador SUMO, Google Traffic, contagem de tráfego.
 
-**Abstract** - This article details the exploratory research, focused on the problem of the absence of vehicle counts for urban planning, the hypothesis foresees the use of SUMO, a microscopic traffic simulator, to obtain the flow of vehicles from information openly available in mobile device navigation apps, specifically Google Maps traffic. For the simulations a complex road intersection was selected, comprising a roundabout between roads of various classes. Due to the nature of the information provided by Google Traffic, its level of detail relates directly to the amount of traffic jams and irregularities in the current view, the selected time was the peak of the afternoon, from 6:00 pm to 7:00 pm. The objective is to have an estimate of the number of vehicles, so that it can be used as input variables in other simulation scenarios in SUMO itself.
-
-Keywords - Traffic Map, SUMO Simulator, Google Traffic, Traffic Count.
-
 ## 1. Introdução
 
-O crescimento acelerado das cidades, principalmente a partir da década de 1970, resultou no aumento da frota de veículos, principalmente individuais motorizados.
+O crescimento das cidades em conjunto com políticas exclusivas para destinação de recursos na a ampliação da malha viária a partir da década de 1940, concomitantemente à falta de investimentos em outros modais como o ferroviário e navegação, incorpora-se ao planejamento das cidades brasileiras com políticas de priorização da infraestrutura destinada ao automóvel, o incentivo ao aumento na frota de veículos é utilizada como indicador de desenvolvimento (BARAT, 2007). Pode-se observar este aumento especificamente em Santa Catarina, com informações do Departamento Nacional de Trânsito a respeito da frota de veículos dos munícipios do entorno da BR 101/SC, que passou de 1.7 milhão em 2010, para 2.6 milhões em 2019, e tem previsão de alcançar 4.5 milhões em 2029.
 
-Tabela 1: Evolução na Frota de Veículos dos municípios do entorno da BR 101/SC - 2010 e 2019.
+Em proposta realizada pela Federação das Indústrias do Estado de Santa Catarina, BR101 do futuro, 2020, com foco no litoral Catarinense. É apresentado um diagnóstico a respeito da demanda acelerada por mobilidade e subsequentemente pressão na infra estrutura viária, se manifestando com congestionamentos, impactos sociais e econômicos. São propostos investimentos crescentes e concentrados no transporte rodoviário com o intuito de manter níveis de serviço e segurança.
 
-Variável          | 2010       | 2019        | % de Crescimento | Estimativa para 2029
-------------------|------------|-------------|------------------|---------------------
-Frota de veículos | 1.7 milhão | 2.6 milhões | 52,9%            | 4.5 milhões
+Enquanto se por um lado o setor público tem investido em propostas a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços com a intenção de auxiliar o grande número de pessoas atingidas. Uma das ferramentas comercialmente disponíveis é o Google Maps Traffic, seu modelo que em 2007 era constituído por dados de tráfego divulgados por órgãos gestores e empresas, em 2012 passa a incorporar um modelo colaborativo onde cada usuário reporta em tempo real sua situação para a rede (Google, 2021), o dado é anonimizado e retorna ao usuário de forma qualitativa no que diz respeito as condições de tráfego, sem detalhes sobre as quantidades de veículos ou condutores. Quanto a abrangência, apesar do Google não informar o número de usuários do serviço de navegação no Brasil, no mundo é usada por mais de um bilhão de pessoas mensalmente (Google, 2020). A plataforma móvel da qual depende o serviço, segundo levantamento do IBGE em 2019 foi o principal meio de acesso à 183,3 milhões de brasileiros.
 
-Fonte: Denatran - Elaboração e compilação FIESC/GETMS
+O Manual de Estudos de Tráfego elaborado pelo Departamento Nacional de Infraestrutura de Transportes, relaciona os modelos e processos envolvidos no planejamento viário que se inicam com os procedimentos básicos para estudos e avaliação do tráfego atual, as contagens demandam a mobilização de pessoal e equipamentos especializados gerando impacto nos custos e disponibilidade das mesmas. Dentre os levantamentos o conhecimento dos períodos de pico é de grande importância na determinação do Volume Horário de Projeto (DNIT, 2006).
 
-A demanda acelerada por mobilidade e subsequentemente pressão na infra estrutura viária se manifesta com congestionamentos e decaimento no nível de serviços de vias, ao mesmo tempo eleva o consumo de combustíveis e os níveis de poluição. Enquanto se por um lado o setor público tem investido na análise das redes viárias, a fim de predizer e tratar os fatores determinantes geradores de conflitos, várias iniciativas privadas buscam desenvolver serviços com a intenção de auxiliar o grande número de pessoas atingidas. O modelo adotado é o colaborativo, onde cada usuário reporta em tempo real sua situação para a rede. Outra característica a fim de garantir a adequação às leis de proteção de dados e o anonimato de seus usuários, é a de que os dados são em grande parte qualitativos, limitando-se a exibir apenas as condições de tráfego sem detalhes sobre as quantidades, por tipos de veículos ou condutores.
-
-Apesar de apresentar apenas uma fração, no que diz respeito às informações necessárias para o planejamento pelo poder público, onde a contagem do fluxo de veículos é um dos insumos primários de qualquer análise do sistema viário, os aplicativos compensam oferecendo menor custo com maior disponibilidade e abrangência, tanto temporal quanto espacial.
-
-As provas realizadas buscam reunir as características do tráfego reportadas pelos aplicativos e a modelagem da malha viária com regulamentação do trânsito, para preencher parâmetros desconhecidos, neste caso o número de veículos, através da simulação utilizando-se do SUMO.
+As provas realizadas buscam reunir as características do tráfego reportadas pelos aplicativos e a modelagem da malha viária com regulamentação do trânsito, utilizando a regressão por simulação de dados para preencher o número de veículos na determinação do volume horário. Considerando a escala de uma interseção viária inividual foi adotado o modelo microscópico (os veículos são tratados individualmente e utilizam a teoria da perseguição ou car-following) em oposição ao macroscópico (modelos tudo-ou-nada, Estocásticos ou de Equilíbrio)
 
 ## 2. Conceitos básicos
 
@@ -96,6 +86,14 @@ Figura 1: Captura de tela do endereço http://maps.google.com
 Para facilitar os trabalhos seguintes de digitalização da malha, foi feito o georreferenciamento da imagem no software QGIS utilizando o sistema de referência de coordenadas SIRGAS 2000/UTM zone 22s.
 
 ### Configuração do SUMO
+
+Para cada via da rede básica deve-se obter uma descrição completa dos seguintes dados (DNIT, 2006):
+– Local: situação na área de estudo, ressaltando sua importância, categoria e principais interseções.
+– Dimensões Físicas: caracterização de cada via: comprimento, largura, número de faixas de tráfego, tipo de via, controles de acesso, etc.
+– Características do Tráfego: velocidade média de viagem nas horas de pico e fora dela, volumes de tráfego existentes, composição modal do tráfego, etc.
+– Regulamentação do Tráfego: sinalização das vias, mãos de direção, possibilidades de estacionamento, conversões proibidas, etc.
+
+A entrada dos dados no SUMO é feita no formato XML, em arquivos distintos de acordo com o tipo.
 
 **- Malha viária (.net.xml):** Pode ser obtida de várias maneiras como a partir de malhas externas, através do módulo NETCONVERT pode utilizar dados provenientes de arquivos .shp ou até mesmo de serviços online como OpenStreetMap. Se optou por confeccionar uma malha própria utilizando outro módulo dedicado o NETEDIT, com o intuito de mapear com a maior exatidão possível (menor escala gráfica) o modelo, o NETEDIT também permite que sejam acrescidas propriedades adicionais personalizadas, além das características físicas e de regulamentação de trânsito.
 
@@ -294,7 +292,9 @@ Apesar dos resultados expressos neste artigo o SUMO por se tratar de um simulado
 
 ## 8. Referências
 
-- GOOGLE MAPS, 2021. Av. Ver. Abrahão João Francisco - Centro Itajaí - SC, 1:1.500. Google Maps [online]. Disponível:  Google Maps <https://www.google.com.br/maps/@-26.9359751,-48.6964524,16.77z>, acesso em: 27 de ago. de 2021;
+- GOOGLE MAPS, 2021. Av. Ver. Abrahão João Francisco - Centro Itajaí - SC, 1:1.500. Google Maps [online]. Disponível em:  Google Maps <https://www.google.com.br/maps/@-26.9359751,-48.6964524,16.77z>, acesso em: 27 de ago. de 2021;
+
+- OFFICIAL MAPS BLOG. A look back at 15 years of mapping the world, 2020 [online]. Disponível em:  <https://blog.google/products/maps/look-back-15-years-mapping-world/>, acesso em: 27 de ago. de 2021;
 
 - SUMO WIKI. Simulação do Urban Mobility – Wiki. Disponível em <https://sumo.dlr.de/wiki/Simulation_of_Urban_MObility_-_Wiki>, acesso em: 01 de ago. de 2021;
 
@@ -302,8 +302,12 @@ Apesar dos resultados expressos neste artigo o SUMO por se tratar de um simulado
 
 - CONTRAN. Volume IV – Sinalização Horizontal. Manual Brasileiro de Sinalização de Trânsito, 2007;
 
+- Ministério das Comunicações - IBGE, Pesquisa mostra que 82,7% dos domicílios brasileiros têm acesso à internet [online]. Disponível em : <https://www.gov.br/mcom/pt-br/noticias/2021/abril/pesquisa-mostra-que-82-7-dos-domicilios-brasileiros-tem-acesso-a-internet>, acesso em: 27 de ago. de 2021;
+
 - FEDERAÇÃO DAS INDÚSTRIAS DO ESTADO DE SANTA CATARINA. BR101 do futuro: proposta para garantir a segurança e a eficiência do eixo litorâneo catarinense. Florianópolis, 2020;
 
 - DE PAULA, Marilene; BARTELT, Dawid Danilo. Mobilidade urbana no Brasil: desafios e alternativas. Rio de Janeiro: Fundação Heinrich Böll, 2016;
+
+- BARAT, J. Logística, transporte e desenvolvimento econômico. São Paulo: CLA Editora, 2007.
 
 - MATPLOTLIB. Matplotlib: Visualization with Python. Disponível em: <https://matplotlib.org/index.html >, acesso em: 03 set. 2021.
